@@ -17,7 +17,7 @@ sub BBSCGI
 
 	$err = Initialize($CGI, $Page);
 	
-	if ($err == $MK::E_SUCESS
+	if ($err == $MK::E_SUCESS) {
 		my $Sys =  $CGI->{'SYS'};
 		my $Form =  $CGI->{'FORM'};
 		my $Set = $CGI -> {'SET'};
@@ -25,7 +25,7 @@ sub BBSCGI
 		my $Threads = $CGI -> {'THREADS'};
 		
 		require './module/vara.pl';
-		my $WriteAiid = VARA->new;
+		my $WriteAid = VARA->new;
 
 		$err =  $WriteAid->Write();
 		
