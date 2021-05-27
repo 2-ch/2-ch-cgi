@@ -1,7 +1,7 @@
 #!/usr/bin/perl
 #============================================================================================================
 #
-#	システム管理CGI
+#	Administraﾃｧﾃ｣o system CGI
 #
 #============================================================================================================
 
@@ -13,26 +13,26 @@ no warnings 'once';
 ##use CGI::Carp qw(fatalsToBrowser warningsToBrowser);
 
 
-# CGIの実行結果を終了コードとする
+# Usar resultado de execuﾃｧﾃ｣o CGI como fim code 
 exit(AdminCGI());
 
 #------------------------------------------------------------------------------------------------------------
 #
-#	admin.cgiメイン
+#	admin.cgi main
 #	-------------------------------------------------------------------------------------
-#	@param	なし
-#	@return	エラー番号
+#	@param	sem
+#	@return	error nﾃｺmero
 #
 #------------------------------------------------------------------------------------------------------------
 sub AdminCGI
 {
 	require './module/constant.pl';
 	
-	# システム初期設定
+	# System inicializaﾃｧﾃ｣o configuraﾃｧﾃ｣o
 	my $CGI = {};
 	SystemSetting($CGI);
 	
-	# 0chシステム情報を取得
+	# Aquisiﾃｧﾃ｣o de informaﾃｧﾃｵes de 0ch system
 	require "./module/melkor.pl";
 	my $Sys = MELKOR->new;
 	$Sys->Init();
@@ -40,17 +40,17 @@ sub AdminCGI
 	$CGI->{'LOGGER'}->Open('.'.$Sys->Get('INFO').'/AdminLog', 100, 2 | 4);
 	$CGI->{'SECINFO'}->Init($Sys);
 	
-	# 夢が広がりんぐ
+	# Sonho estﾃ｡ expandingu
 	$Sys->Set('ADMIN', $CGI);
 	$Sys->Set('MainCGI', $CGI);
 	
-	# フォーム情報を取得
+	# Aquisiﾃｧﾃ｣o de informaﾃｧﾃ｣o de form
 	require "./module/samwise.pl";
 	my $Form = SAMWISE->new(0);
 	$Form->DecodeForm(0);
 	$Form->Set('FALSE', 0);
 	
-	# ログインユーザ設定
+	# Login user configuraﾃｧﾃ｣o
 	my $name = $Form->Get('UserName', '');
 	my $pass = $Form->Get('PassWord', '');
 	my $sid = $Form->Get('SessionID', '');
@@ -60,7 +60,7 @@ sub AdminCGI
 	$CGI->{'USER'} = $userID;
 	$Form->Set('SessionID', $SID);
 	
-	# バージョンチェック
+	# Version check
 	my $upcheck = $Sys->Get('UPCHECK', 1) - 0;
 	$CGI->{'NEWRELEASE'}->Init($Sys);
 	if ($upcheck) {
@@ -68,21 +68,21 @@ sub AdminCGI
 		$CGI->{'NEWRELEASE'}->Check;
 	}
 	
-	# 処理モジュールオブジェクトの生成
+	# Mﾃｳdulo de processamento object geraﾃｧﾃ｣o
 	my $modName = $Form->Get('MODULE', 'login');
 	$modName = 'login' if (!$userID);
 	require "./mordor/$modName.pl";
 	my $oModule = MODULE->new;
 	
-	# 表示モード
+	# Modo de exibiﾃｧﾃ｣o
 	if ($Form->Get('MODE', '') eq 'DISP') {
 		$oModule->DoPrint($Sys, $Form, $CGI);
 	}
-	# 機能モード
+	# Modo de funﾃｧﾃ｣o
 	elsif ($Form->Get('MODE', '') eq 'FUNC') {
 		$oModule->DoFunction($Sys, $Form, $CGI);
 	}
-	# ログイン
+	# Login
 	else {
 		$CGI->{'SECINFO'}->Logout($SID);
 		$oModule->DoPrint($Sys, $Form, $CGI);
@@ -95,10 +95,10 @@ sub AdminCGI
 
 #------------------------------------------------------------------------------------------------------------
 #
-#	管理システム設定
+#	Administraﾃｧﾃ｣o system configuraﾃｧﾃ｣o
 #	-------------------------------------------------------------------------------------
-#	@param	$pSYS	システム管理ハッシュの参照
-#	@return	なし
+#	@param	$pSYS	referﾃｪncia de system administraﾃｧﾃ｣o hash
+#	@return	sem
 #
 #------------------------------------------------------------------------------------------------------------
 sub SystemSetting
@@ -106,12 +106,12 @@ sub SystemSetting
 	my ($CGI) = @_;
 	
 	%$CGI = (
-		'SECINFO'	=> undef,		# セキュリティ情報
-		'LOGGER'	=> undef,		# ログオブジェクト
-		'AD_BBS'	=> undef,		# BBS情報オブジェクト
-		'AD_DAT'	=> undef,		# dat情報オブジェクト
-		'USER'		=> undef,		# ログインユーザID
-		'NEWRELEASE'=> undef,		# バージョンチェック
+		'SECINFO'	=> undef,		# security informaﾃｧﾃ｣o
+		'LOGGER'	=> undef,		# log object
+		'AD_BBS'	=> undef,		# BBS informaﾃｧﾃ｣o object
+		'AD_DAT'	=> undef,		# dat informaﾃｧﾃ｣o object
+		'USER'		=> undef,		# Login user ID
+		'NEWRELEASE'=> undef,		# Version check
 	);
 	
 	require './module/elves.pl';
