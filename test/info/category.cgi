@@ -1,1 +1,1 @@
-0000000001<>ˆê”Ê<>ˆê”ÊA‚à‚µ‚­‚Í–¢•ª—Ş‚ÌŒf¦”Â
+0000000001<>Geral<>Geral, ou keijiban sem categoria
