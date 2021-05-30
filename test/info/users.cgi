@@ -1,1 +1,1 @@
-0000000001<>Administrator<>431XyHmErk<>システムアドミニストレータ<>システム管理者。<>1
+0000000001<>Administrator<>431XyHmErk<>System administrator<>Administrador de sistema.<>1
