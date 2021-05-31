@@ -591,7 +591,7 @@ BBS.CGI - $ver (Perl)
 </div>
 
 FOOT
-	
+	$Page->Print("<select id="styleSelector"><option value="Default">Default</option><option value="Felino">Felino</option><option value="Iogurte">Iogurte</option><option value="Simulacro">Simulacro</option><option value="Erebos">Erebos</option></select>"
 	$Page->Print("</body>\n</html>\n");
 }
 
