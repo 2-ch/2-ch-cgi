@@ -1,10 +1,10 @@
 #!/usr/bin/perl
 #============================================================================================================
 #
-#	indexXV—pCGI
+#	index atualizaÃ§Ã£oç”¨CGI
 #	remake.cgi
 #	-------------------------------------------------------------------------------------
-#	2006.08.05 bbs.cgi‚©‚ç•K—v‚È•”•ª‚¾‚¯”²‚«o‚µ
+#	2006.08.05 extraido apenas partes necessÃ¡rias do bbs.cgi
 #
 #============================================================================================================
 
@@ -15,14 +15,14 @@ no warnings 'once';
 
 BEGIN { use lib './perllib'; }
 
-# CGI‚ÌÀsŒ‹‰Ê‚ğI—¹ƒR[ƒh‚Æ‚·‚é
+# Usar resultado de execuÃ§Ã£o CGI como fim code 
 exit(REMAKECGI());
 #------------------------------------------------------------------------------------------------------------
 #
-#	remake.cgiƒƒCƒ“
+#	remake.cgi main
 #	-------------------------------------------------------------------------------------
-#	@param	‚È‚µ
-#	@return	‚È‚µ
+#	@param	sem
+#	@return	sem
 #
 #------------------------------------------------------------------------------------------------------------
 sub REMAKECGI
@@ -34,7 +34,7 @@ sub REMAKECGI
 	require './module/thorin.pl';
 	$Page = new THORIN;
 	
-	# ‰Šú‰»‚É¬Œ÷‚µ‚½‚çXVˆ—‚ğŠJn
+	# Se sucedir na inicializaÃ§Ã£o comeÃ§ar processo de atualizaÃ§Ã£o
 	if (($err = Initialize(\%SYS, $Page)) == 0) {
 		#require './module/baggins.pl';
 		require './module/varda.pl';
@@ -59,7 +59,7 @@ sub REMAKECGI
 		PrintBBSError(\%SYS, $Page, $err);
 	}
 	
-	# Œ‹‰Ê‚Ì•\¦
+	# exibiÃ§Ã£o do resultado
 	$Page->Flush('', 0, 0);
 	
 	return $err;
@@ -67,10 +67,10 @@ sub REMAKECGI
 
 #------------------------------------------------------------------------------------------------------------
 #
-#	remake.cgi‰Šú‰»
+#	remake.cgi inicializaÃ§Ã£o
 #	-------------------------------------------------------------------------------------
-#	@param	‚È‚µ
-#	@return	‚È‚µ
+#	@param	sem
+#	@return	sem
 #
 #------------------------------------------------------------------------------------------------------------
 sub Initialize
@@ -78,7 +78,7 @@ sub Initialize
 	my ($Sys, $Page) = @_;
 	my ($bbs);
 	
-	# g—pƒ‚ƒWƒ…[ƒ‹‚Ì‰Šú‰»
+	# InicializaÃ§Ã£o dos mÃ³dulos em uso
 	require './module/melkor.pl';
 	require './module/isildur.pl';
 	require './module/radagast.pl';
@@ -94,15 +94,15 @@ sub Initialize
 		'PAGE'		=> $Page,
 	);
 	
-	# formî•ñİ’è
+	# form informaÃ§Ã£o configuraÃ§Ã£o
 	$Sys->{'FORM'}->DecodeForm(1);
 	
-	# ƒVƒXƒeƒ€î•ñİ’è
+	# system informaÃ§Ã£o configuraÃ§Ã£o
 	if ($Sys->{'SYS'}->Init()) {
 		return 990;
 	}
 	
-	# –²‚ªL‚ª‚è‚ñ‚®
+	# Sonho estÃ¡ expandingu
 	$Sys->{'SYS'}->{'MainCGI'} = $Sys;
 	
 	$bbs = $Sys->{'FORM'}->Get('bbs', '');
@@ -119,7 +119,7 @@ sub Initialize
 	$Sys->{'SYS'}->Set('AGENT', $Sys->{'CONV'}->GetAgentMode($Sys->{'SYS'}->Get('CLIENT')));
 	$Sys->{'SYS'}->Set('MODE', 'CREATE');
 	
-	# SETTING.TXT‚Ì“Ç‚İ‚İ
+	# SETTING.TXT leitura
 	if (! $Sys->{'SET'}->Load($Sys->{'SYS'})) {
 		return 999;
 	}
@@ -130,10 +130,10 @@ sub Initialize
 
 #------------------------------------------------------------------------------------------------------------
 #
-#	remake.cgiƒWƒƒƒ“ƒvƒy[ƒW•\¦
+#	remake.cgi jump page exibiÃ§Ã£o
 #	-------------------------------------------------------------------------------------
-#	@param	‚È‚µ
-#	@return	‚È‚µ
+#	@param	sem
+#	@return	sem
 #
 #------------------------------------------------------------------------------------------------------------
 sub PrintBBSJump
@@ -144,27 +144,27 @@ sub PrintBBSJump
 	$SYS		= $Sys->{'SYS'};
 	$bbsPath	= $SYS->Get('BBS_REL');
 	
-	# Œg‘Ñ—p•\¦
+	# keitaiç”¨ exibiÃ§Ã£o
 	if ($SYS->Get('CLIENT') & $ZP::C_MOBILEBROWSER) {
 		$Page->Print("Content-type: text/html\n\n");
-		$Page->Print('<!--nobanner--><html><body>index‚ğXV‚µ‚Ü‚µ‚½B<br>');
-		$Page->Print("<a href=\"$bbsPath/i/\">‚±‚¿‚ç</a>");
-		$Page->Print("‚©‚çŒf¦”Â‚Ö–ß‚Á‚Ä‚­‚¾‚³‚¢B\n");
+		$Page->Print('<!--nobanner--><html><body>index wo atualizouã€‚<br>');
+		$Page->Print("<a href=\"$bbsPath/i/\">de aqui</a>");
+		$Page->Print("ao keijiban voltekudasaiã€‚\n");
 	}
-	# PC—p•\¦
+	# PCç”¨ exibiÃ§Ã£o
 	else {
 		my $oSET = $Sys->{'SET'};
 		
 		$Page->Print("Content-type: text/html\n\n<html><head><title>");
-		$Page->Print('index‚ğXV‚µ‚Ü‚µ‚½B</title><!--nobanner-->');
+		$Page->Print('index wo atualizouã€‚</title><!--nobanner-->');
 		$Page->Print('<meta http-equiv="Content-Type" content="text/html; ');
-		$Page->Print("charset=Shift_JIS\"><meta content=0;URL=$bbsPath/ ");
-		$Page->Print('http-equiv=refresh></head><body>index‚ğXV‚µ‚Ü‚µ‚½B');
-		$Page->Print('<br><br>‰æ–Ê‚ğØ‚è‘Ö‚¦‚é‚Ü‚Å‚µ‚Î‚ç‚­‚¨‘Ò‚¿‰º‚³‚¢B');
+		$Page->Print("charset=UTF8\"><meta content=0;URL=$bbsPath/ ");
+		$Page->Print('http-equiv=refresh></head><body>index wo atualizouã€‚');
+		$Page->Print('<br><br>AtÃ© a tela mudar um tempo esperekudasaiã€‚');
 		$Page->Print('<br><br><br><br><br><hr>');
 		
 	}
-	# ’m—“•\¦(•\¦‚³‚¹‚½‚­‚È‚¢ê‡‚ÍƒRƒƒ“ƒgƒAƒEƒg‚©ğŒ‚ğ0‚É)
+	# coluna de notificaÃ§Ã£o exibiÃ§Ã£o (caso nÃ£o querer exibiÃ§Ã£o Ã© comment out ou condiÃ§Ã£o a 0)
 	if (0) {
 		require './module/denethor.pl';
 		my $BANNER = new DENETHOR;
@@ -176,10 +176,10 @@ sub PrintBBSJump
 
 #------------------------------------------------------------------------------------------------------------
 #
-#	remake.cgiƒGƒ‰[ƒy[ƒW•\¦
+#	remake.cgi error page exibiÃ§Ã£o
 #	-------------------------------------------------------------------------------------
-#	@param	‚È‚µ
-#	@return	‚È‚µ
+#	@param	sem
+#	@return	sem
 #
 #------------------------------------------------------------------------------------------------------------
 sub PrintBBSError
