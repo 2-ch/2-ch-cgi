@@ -1,7 +1,7 @@
 #!/usr/bin/perl
 #============================================================================================================
 #
-#	書き込み用CGI
+#	Escrita用CGI
 #
 #============================================================================================================
 
@@ -13,47 +13,47 @@ no warnings 'once';
 ##use CGI::Carp qw(fatalsToBrowser warningsToBrowser);
 
 
-# CGIの実行結果を終了コードとする
+# Usar resultado de execução CGI como fim code
 exit(BBSCGI());
 
 #------------------------------------------------------------------------------------------------------------
 #
-#	bbs.cgiメイン
+#	bbs.cgi main
 #	-------------------------------------------------------------------------------------
-#	@param	なし
-#	@return	エラー番号
+#	@param	sem
+#	@return	número de erro
 #
 #------------------------------------------------------------------------------------------------------------
 sub BBSCGI
 {
 	require './module/constant.pl';
-	
+
 	require './module/thorin.pl';
 	my $Page = THORIN->new;
-	
+
 	my $CGI = {};
 	my $err = $ZP::E_SUCCESS;
-	
+
 	$err = Initialize($CGI, $Page);
-	# 初期化に成功したら書き込み処理を開始
+	# Se tiver sucesso na inicialização começar processo de escrita
 	if ($err == $ZP::E_SUCCESS) {
 		my $Sys = $CGI->{'SYS'};
 		my $Form = $CGI->{'FORM'};
 		my $Set = $CGI->{'SET'};
 		my $Conv = $CGI->{'CONV'};
 		my $Threads = $CGI->{'THREADS'};
-		
+
 		require './module/vara.pl';
 		my $WriteAid = VARA->new;
 		$WriteAid->Init($Sys, $Form, $Set, $Threads, $Conv);
-		
+
 		$err = $WriteAid->Write();
-		# 書き込みに成功したら掲示板構成要素を更新する
+		# Se tiver sucesso na escrita atualizar keijiban estrutura elemento
 		if ($err == $ZP::E_SUCCESS) {
 			if (!$Sys->Equal('FASTMODE', 1)) {
 				require './module/varda.pl';
 				my $BBSAid = VARDA->new;
-				
+
 				$BBSAid->Init($Sys, $Set);
 				$BBSAid->CreateIndex();
 				$BBSAid->CreateIIndex();
@@ -66,65 +66,65 @@ sub BBSCGI
 		}
 	}
 	else {
-		# スレッド作成画面表示
+		# Thread criação tela exibição
 		if ($err == $ZP::E_PAGE_THREAD) {
 			PrintBBSThreadCreate($CGI, $Page);
 			$err = $ZP::E_SUCCESS;
 		}
-		# cookie確認画面表示
+		# cookie verificação tela exibição
 		elsif ($err == $ZP::E_PAGE_COOKIE) {
 			PrintBBSCookieConfirm($CGI, $Page);
 			$err = $ZP::E_SUCCESS;
 		}
-		# 携帯からのスレッド作成画面表示
+		# De keitai thread criação tela exibição
 		elsif ($err == $ZP::E_PAGE_THREADMOBILE) {
 			PrintBBSMobileThreadCreate($CGI, $Page);
 			$err = $ZP::E_SUCCESS;
 		}
-		# エラー画面表示
+		# Error tela exibição
 		else {
 			PrintBBSError($CGI, $Page, $err);
 		}
 	}
-	
-	# 結果の表示
+
+	# Exibição de resultado
 	$Page->Flush('', 0, 0);
-	
+
 	return $err;
 }
 
 #------------------------------------------------------------------------------------------------------------
 #
-#	bbs.cgi初期化
+#	bbs.cgi Inicialização
 #	-------------------------------------------------------------------------------------
 #	@param	$CGI
 #	@param	$Page
-#	@return	なし
+#	@return	sem
 #
 #------------------------------------------------------------------------------------------------------------
 sub Initialize
 {
 	my ($CGI, $Page) = @_;
-	
-	# 使用モジュールの初期化
+
+	# Inicialização de módulos em uso
 	require './module/melkor.pl';
 	require './module/isildur.pl';
 	require './module/radagast.pl';
 	require './module/galadriel.pl';
 	require './module/samwise.pl';
 	require './module/baggins.pl';
-	
+
 	my $Sys = MELKOR->new;
 	my $Conv = GALADRIEL->new;
 	my $Set = ISILDUR->new;
 	my $Cookie = RADAGAST->new;
 	my $Threads = BILBO->new;
-	
-	# システム情報設定
+
+	# System informação configuração
 	return $ZP::E_SYSTEM_ERROR if ($Sys->Init());
-	
+
 	my $Form = SAMWISE->new($Sys->Get('BBSGET'));
-	
+
 	%$CGI = (
 		'SYS'		=> $Sys,
 		'SET'		=> $Set,
@@ -134,22 +134,22 @@ sub Initialize
 		'FORM'		=> $Form,
 		'THREADS'	=> $Threads,
 	);
-	
-	# 夢が広がりんぐ
+
+	# Sonho está expandingu
 	$Sys->Set('MainCGI', $CGI);
-	
-	# form情報設定
+
+	# form informação configuração
 	$Form->DecodeForm(1);
-	
-	# ホスト情報設定(DNS逆引き)
-	#変数初期化チェックを挿入。
+
+	# Host informação configuração(DNS resolução reversa)
+	#Variável inicialização check inserir。
 	if(!defined $ENV{'REMOTE_HOST'} || $ENV{'REMOTE_HOST'} eq '') {
 		$ENV{'REMOTE_HOST'} = $Conv->GetRemoteHost();
 	}
 	$Form->Set('HOST', $ENV{'REMOTE_HOST'});
-	
+
 	my $client = $Conv->GetClient();
-	
+
 	$Sys->Set('ENCODE', 'Shift_JIS');
 	$Sys->Set('BBS', $Form->Get('bbs', ''));
 	$Sys->Set('KEY', $Form->Get('key', ''));
@@ -159,39 +159,39 @@ sub Initialize
 	$Sys->Set('BBSPATH_ABS', $Conv->MakePath($Sys->Get('CGIPATH'), $Sys->Get('BBSPATH')));
 	$Sys->Set('BBS_ABS', $Conv->MakePath($Sys->Get('BBSPATH_ABS'), $Sys->Get('BBS')));
 	$Sys->Set('BBS_REL', $Conv->MakePath($Sys->Get('BBSPATH'), $Sys->Get('BBS')));
-	
-	# 携帯の場合は機種情報を設定
+
+	# No caso de keitai é definir informações do modelo
 	if ($client & $ZP::C_MOBILE_IDGET) {
 		my $product = $Conv->GetProductInfo($client);
-		
+
 		if (!defined $product) {
 			return $ZP::E_POST_NOPRODUCT;
 		}
-		
+
 		$Sys->Set('KOYUU', $product);
 	}
-	
-	# SETTING.TXTの読み込み
+
+	# Leitura de SETTING.TXT
 	if (!$Set->Load($Sys)) {
 		return $ZP::E_POST_NOTEXISTBBS;
 	}
-	
-	# 携帯からのスレッド作成フォーム表示
-	# $S->Equal('AGENT', 'O') && 
+
+	# De keitai thread criação form exibição
+	# $S->Equal('AGENT', 'O') &&
 	if ($Form->Equal('mb', 'on') && $Form->Equal('thread', 'on')) {
 		return $ZP::E_PAGE_THREADMOBILE;
 	}
-	
+
 	my $submax = $Set->Get('BBS_SUBJECT_MAX') || $Sys->Get('SUBMAX');
 	$Sys->Set('SUBMAX', $submax);
 	my $resmax = $Set->Get('BBS_RES_MAX') || $Sys->Get('RESMAX');
 	$Sys->Set('RESMAX', $resmax);
-	
-	# form情報にkeyが存在したらレス書き込み
+
+	# Em form informação se key existe resu escrita
 	if ($Form->IsExist('key'))	{ $Sys->Set('MODE', 2); }
 	else						{ $Sys->Set('MODE', 1); }
-	
-	# スレッド作成モードでMESSAGEが無い：スレッド作成画面
+
+	# No thread criação mode MESSAGE não há：thread criação tela
 	if ($Sys->Equal('MODE', 1)) {
 		if (!$Form->IsExist('MESSAGE')) {
 			return $ZP::E_PAGE_THREAD;
@@ -199,61 +199,61 @@ sub Initialize
 		$Form->Set('key', int(time));
 		$Sys->Set('KEY', $Form->Get('key'));
 	}
-	
-	# cookieの存在チェック(PCのみ)
+
+	# Existência de cookie check(PC apenas)
 	if ($client & $ZP::C_PC) {
 		if ($Set->Equal('SUBBBS_CGI_ON', 1)) {
-			# 環境変数取得失敗
+			# ambiente variável aquisição falha
 			if (!$Cookie->Init()) {
 				return $ZP::E_PAGE_COOKIE;
 			}
-			
-			# 名前欄cookie
+
+			# Nome coluna cookie
 			if ($Set->Equal('BBS_NAMECOOKIE_CHECK', 'checked') && !$Cookie->IsExist('NAME')) {
 				return $ZP::E_PAGE_COOKIE;
 			}
-			# メール欄cookie
+			# mail coluna cookie
 			if ($Set->Equal('BBS_MAILCOOKIE_CHECK', 'checked') && !$Cookie->IsExist('MAIL')) {
 				return $ZP::E_PAGE_COOKIE;
 			}
 		}
 	}
-	
-	# subjectの読み込み
+
+	# Leitura de subject
 	$Threads->Load($Sys);
-	
+
 	return $ZP::E_SUCCESS;
 }
 
 #------------------------------------------------------------------------------------------------------------
 #
-#	bbs.cgiスレッド作成ページ表示
+#	bbs.cgi thread criação page exibição
 #	-------------------------------------------------------------------------------------
 #	@param	$CGI
 #	@param	$Page
-#	@return	なし
+#	@return	sem
 #
 #------------------------------------------------------------------------------------------------------------
 sub PrintBBSThreadCreate
 {
 	my ($CGI, $Page) = @_;
-	
+
 	my $Sys = $CGI->{'SYS'};
 	my $Set = $CGI->{'SET'};
 	my $Form = $CGI->{'FORM'};
 	my $Cookie = $CGI->{'COOKIE'};
-	
+
 	require './module/legolas.pl';
 	my $Caption = LEGOLAS->new;
 	$Caption->Load($Sys, 'META');
-	
+
 	my $title = $Set->Get('BBS_TITLE');
 	my $link = $Set->Get('BBS_TITLE_LINK');
 	my $image = $Set->Get('BBS_TITLE_PICTURE');
 	my $code = $Sys->Get('ENCODE');
 	my $cgipath = $Sys->Get('CGIPATH');
-	
-	# HTMLヘッダの出力
+
+	# HTML saída de header
 	$Page->Print("Content-type: text/html\n\n");
 	$Page->Print("<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.01 Transitional//EN\" \"http://www.w3.org/TR/html4/loose.dtd\">\n");
 	$Page->Print("<html lang=\"ja\">\n");
@@ -262,8 +262,8 @@ sub PrintBBSThreadCreate
 	$Caption->Print($Page, undef);
 	$Page->Print(" <title>$title</title>\n\n");
 	$Page->Print("</head>\n<!--nobanner-->\n");
-	
-	# <body>タグ出力
+
+	# <body> tag saída
 	{
 		my @work;
 		$work[0] = $Set->Get('BBS_BG_COLOR');
@@ -272,31 +272,31 @@ sub PrintBBSThreadCreate
 		$work[3] = $Set->Get('BBS_ALINK_COLOR');
 		$work[4] = $Set->Get('BBS_VLINK_COLOR');
 		$work[5] = $Set->Get('BBS_BG_PICTURE');
-		
+
 		$Page->Print("<body bgcolor=\"$work[0]\" text=\"$work[1]\" link=\"$work[2]\" ");
 		$Page->Print("alink=\"$work[3]\" vlink=\"$work[4]\" ");
 		$Page->Print("background=\"$work[5]\">\n");
 	}
 
 	$Page->Print("<div align=\"center\">");
-	# 看板画像表示あり
+	# Kanban imagem exibição com
 	if ($image ne '') {
-		# 看板画像からのリンクあり
+		# No kanban imagem tem
 		if ($link ne '') {
 			$Page->Print("<a href=\"$link\"><img src=\"$image\" border=\"0\" alt=\"$image\"></a><br>");
 		}
-		# 看板画像にリンクはなし
+		# No kanban imagem link não tem
 		else {
 			$Page->Print("<img src=\"$image\" border=\"0\"><br>");
 		}
 	}
 	$Page->Print("</div>");
 
-	# ヘッダテーブルの表示
+	# Exibição de header table
 	$Caption->Load($Sys, 'HEAD');
 	$Caption->Print($Page, $Set);
-	
-	# スレッド作成フォームの表示
+
+	# Exibição de criação de thread form
 	{
 		my $tblCol = $Set->Get('BBS_MAKETHREAD_COLOR');
 		my $name = $Cookie->Get('NAME', '', 'utf8');
@@ -304,7 +304,7 @@ sub PrintBBSThreadCreate
 		my $bbs = $Form->Get('bbs');
 		my $tm = int(time);
 		my $ver = $Sys->Get('VERSION');
-		
+
 		$Page->Print(<<HTML);
 <table border="1" cellspacing="7" cellpadding="3" width="95%" bgcolor="$tblCol" align="center">
  <tr>
@@ -340,34 +340,34 @@ HTML
 
 #------------------------------------------------------------------------------------------------------------
 #
-#	bbs.cgiスレッド作成ページ(携帯)表示
+#	bbs.cgi criação de thread page(keitai) exibição
 #	-------------------------------------------------------------------------------------
-#	@param	$CGI	
+#	@param	$CGI
 #	@param	$Page	THORIN
-#	@return	なし
+#	@return	sem
 #
 #------------------------------------------------------------------------------------------------------------
 sub PrintBBSMobileThreadCreate
 {
 	my ($CGI, $Page) = @_;
-	
+
 	my $Sys = $CGI->{'SYS'};
 	my $Set = $CGI->{'SET'};
-	
+
 	require './module/denethor.pl';
 	my $Banner = DENETHOR->new;
 	$Banner->Load($Sys);
-	
+
 	my $title = $Set->Get('BBS_TITLE');
 	my $bbs = $Sys->Get('BBS');
 	my $tm = int(time);
-	
+
 	$Page->Print("Content-type: text/html\n\n");
 	$Page->Print("<html><head><title>$title</title></head><!--nobanner-->");
 	$Page->Print("\n<body><form action=\"./bbs.cgi?guid=ON\" method=\"POST\"><center>$title<hr>");
-	
+
 	$Banner->Print($Page, 100, 2, 1);
-	
+
 	$Page->Print("</center>\n");
 	$Page->Print("Title<br><input type=text name=subject><br>");
 	$Page->Print("Nome<br><input type=text name=FROM><br>");
@@ -382,22 +382,22 @@ sub PrintBBSMobileThreadCreate
 
 #------------------------------------------------------------------------------------------------------------
 #
-#	bbs.cgiクッキー確認ページ表示
+#	bbs.cgi cookie verificação page exibição
 #	-------------------------------------------------------------------------------------
-#	@param	$CGI	
+#	@param	$CGI
 #	@param	$Page	THORIN
-#	@return	なし
+#	@return	sem
 #
 #------------------------------------------------------------------------------------------------------------
 sub PrintBBSCookieConfirm
 {
 	my ($CGI, $Page) = @_;
-	
+
 	my $Sys = $CGI->{'SYS'};
 	my $Form = $CGI->{'FORM'};
 	my $Set = $CGI->{'SET'};
 	my $Cookie = $CGI->{'COOKIE'};
-	
+
 	my $sanitize = sub {
 		$_ = shift;
 		s/&/&amp;/g;
@@ -414,12 +414,12 @@ sub PrintBBSCookieConfirm
 	my $msg = &$sanitize($Form->Get('MESSAGE'));
 	my $subject = &$sanitize($Form->Get('subject'));
 	my $key = &$sanitize($Form->Get('key'));
-	
-	# cookie情報の出力
+
+	# cookie saída de informação
 	$Cookie->Set('NAME', $name, 'utf8')	if ($Set->Equal('BBS_NAMECOOKIE_CHECK', 'checked'));
 	$Cookie->Set('MAIL', $mail, 'utf8')	if ($Set->Equal('BBS_MAILCOOKIE_CHECK', 'checked'));
 	$Cookie->Out($Page, $Set->Get('BBS_COOKIEPATH'), 60 * 24 * 30);
-	
+
 	$Page->Print("Content-type: text/html\n\n");
 	$Page->Print(<<HTML);
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -434,8 +434,8 @@ sub PrintBBSCookieConfirm
 </head>
 <!--nobanner-->
 HTML
-	
-	# <body>タグ出力
+
+	# <body> tag saída
 	{
 		my @work;
 		$work[0] = $Set->Get('BBS_THREAD_COLOR');
@@ -443,11 +443,11 @@ HTML
 		$work[2] = $Set->Get('BBS_LINK_COLOR');
 		$work[3] = $Set->Get('BBS_ALINK_COLOR');
 		$work[4] = $Set->Get('BBS_VLINK_COLOR');
-		
+
 		$Page->Print("<body bgcolor=\"$work[0]\" text=\"$work[1]\" link=\"$work[2]\" ");
 		$Page->Print("alink=\"$work[3]\" vlink=\"$work[4]\">\n");
 	}
-	
+
 	$Page->Print(<<HTML);
 <font size="4" color="#FF0000"><b>Escrita＆Cookie verificação</b></font>
 <blockquote style="margin-top:4em;">
@@ -458,41 +458,41 @@ HTML
 </blockquote>
 
 <div style="font-weight:bold;">
-投稿確認<br>
-・投稿者は、投稿に関して発生する責任が全て投稿者に帰すことを承諾します。<br>
-・投稿者は、話題と無関係な広告の投稿に関して、相応の費用を支払うことを承諾します<br>
-・投稿者は、投稿された内容について、掲示板運営者がコピー、保存、引用、転載等の利用することを許諾します。<br>
-　また、掲示板運営者に対して、著作者人格権を一切行使しないことを承諾します。<br>
-・投稿者は、掲示板運営者が指定する第三者に対して、著作物の利用許諾を一切しないことを承諾します。<br>
+Verificação de contribuição<br>
+・Contribuinte é, aceita que a responsabilidade que surge com relação a contribuição volta ao contribuinte.<br>
+・Contribuinte é, com relação a contribuições de anúncios sem relevância ao tema, concorda em pagar uma taxa razoável.<br>
+・Contribuinte é, Sobre o conteúdo contribuido, permite que o operador do keijiban copie, salve, cite, reimprima entre outros usos.<br>
+　Também, a respeito do operador do keijiban, concorda não exercer em absoluto nenhum direito moral.<br>
+・Contribuinte é, a respeito dos terceiros indicados pelo operador do keijiban, concorda absolutamente não fazer licença de coisas protegidas por direitos autorais.<br>
 </div>
 
 <form method="POST" action="./bbs.cgi?guid=ON">
 HTML
-	
+
 	$msg =~ s/<br>/\n/g;
-	
+
 	$Page->HTMLInput('hidden', 'subject', $subject);
 	$Page->HTMLInput('hidden', 'FROM', $name);
 	$Page->HTMLInput('hidden', 'mail', $mail);
 	$Page->HTMLInput('hidden', 'MESSAGE', $msg);
 	$Page->HTMLInput('hidden', 'bbs', $bbs);
 	$Page->HTMLInput('hidden', 'time', $tm);
-	
-	# レス書き込みモードの場合はkeyを設定する
+
+	# No caso de resu escrita mode é configurar key
 	if ($Sys->Equal('MODE', 2)) {
 		$Page->HTMLInput('hidden', 'key', $key);
 	}
-	
+
 	$Page->Print(<<HTML);
 <input type="submit" value="上記全てを承諾して書き込む"><br>
 </form>
 
 <p>
-変更する場合は戻るボタンで戻って書き直して下さい。
+Caso de mudar é volte no botão voltar reescrevakudasai.
 </p>
 
 <p>
-現在、荒らし対策でクッキーを設定していないと書きこみできないようにしています。<br>
+Atual, como arasi prevenção cookie não configurado e escrita tornará se não possível.<br>
 <font size="2">(cookieを設定するとこの画面はでなくなります。)</font><br>
 </p>
 
@@ -504,46 +504,46 @@ HTML
 
 #------------------------------------------------------------------------------------------------------------
 #
-#	bbs.cgiジャンプページ表示
+#	bbs.cgi jump page exibição
 #	-------------------------------------------------------------------------------------
 #	@param	$CGI
 #	@param	$Page
-#	@return	なし
+#	@return	sem
 #
 #------------------------------------------------------------------------------------------------------------
 sub PrintBBSJump
 {
 	my ($CGI, $Page) = @_;
-	
+
 	my $Sys = $CGI->{'SYS'};
 	my $Form = $CGI->{'FORM'};
 	my $Set = $CGI->{'SET'};
 	my $Conv = $CGI->{'CONV'};
 	my $Cookie = $CGI->{'COOKIE'};
-	
-	# 携帯用表示
+
+	# Keitai用 exibição
 	if ($Form->Equal('mb', 'on') || ($Sys->Get('CLIENT') & $ZP::C_MOBILEBROWSER) ) {
 		my $bbsPath = $Conv->MakePath($Sys->Get('CGIPATH').'/r.cgi/'.$Form->Get('bbs').'/'.$Form->Get('key').'/l10');
 		$Page->Print("Content-type: text/html\n\n");
-		$Page->Print('<!--nobanner--><html><body>書き込み完了です<br>');
-		$Page->Print("<a href=\"$bbsPath\">こちら</a>");
-		$Page->Print("から掲示板へ戻ってください。\n");
+		$Page->Print('<!--nobanner--><html><body>Escrita conclusão desu<br>');
+		$Page->Print("<a href=\"$bbsPath\">Daqui</a>");
+		$Page->Print("ao keijiban voltekudasai.\n");
 	}
-	# PC用表示
+	# PC用 exibição
 	else {
 		my $bbsPath = $Conv->MakePath($Sys->Get('BBS_REL'));
 		my $name = $Form->Get('NAME', '');
 		my $mail = $Form->Get('MAIL', '');
-		
+
 		$Cookie->Set('NAME', $name, 'utf8')	if ($Set->Equal('BBS_NAMECOOKIE_CHECK', 'checked'));
 		$Cookie->Set('MAIL', $mail, 'utf8')	if ($Set->Equal('BBS_MAILCOOKIE_CHECK', 'checked'));
 		$Cookie->Out($Page, $Set->Get('BBS_COOKIEPATH'), 60 * 24 * 30);
-		
+
 		$Page->Print("Content-type: text/html\n\n");
 		$Page->Print(<<HTML);
 <html>
 <head>
-	<title>書きこみました。</title>
+	<title>Escrito.</title>
 <meta http-equiv="Content-Type" content="text/html; charset=Shift_JIS">
 <meta http-equiv="Refresh" content="5;URL=$bbsPath/">
 </head>
@@ -551,16 +551,16 @@ sub PrintBBSJump
 <body>
 Escrita terminou.<br>
 <br>
-画面を切り替えるまでしばらくお待ち下さい。<br>
+Até a tela mudar um tempo esperekudasai.<br>
 <br>
 <br>
 <br>
 <br>
 <hr>
 HTML
-	
+
 	}
-	# 告知欄表示(表示させたくない場合はコメントアウトか条件を0に)
+	# kokuchi coluna exibição (caso não querer exibição é commentout ou condição para 0)
 	if (0) {
 		require './module/denethor.pl';
 		my $Banner = DENETHOR->new;
@@ -572,22 +572,22 @@ HTML
 
 #------------------------------------------------------------------------------------------------------------
 #
-#	bbs.cgiエラーページ表示
+#	bbs.cgi error page exibição
 #	-------------------------------------------------------------------------------------
 #	@param	$CGI
 #	@param	$Page
 #	@param	$err
-#	@return	なし
+#	@return	sem
 #
 #------------------------------------------------------------------------------------------------------------
 sub PrintBBSError
 {
 	my ($CGI, $Page, $err) = @_;
-	
+
 	require './module/orald.pl';
 	my $Error = ORALD->new;
 	$Error->Load($CGI->{'SYS'});
-	
+
 	$Error->Print($CGI, $Page, $err, $CGI->{'SYS'}->Get('AGENT'));
 }
 
