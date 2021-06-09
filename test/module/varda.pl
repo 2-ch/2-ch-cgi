@@ -135,8 +135,7 @@ sub CreateIIndex
 	# HTMLヘッダの出力
 	my $title = $Set->Get('BBS_TITLE');
 	my $code = $this->{'CODE'};
-	$Page->Print("<html><!--nobanner--><head><title>$title</title>");
-	$Page->Print("<meta http-equiv=Content-Type content=\"text/html;charset=$code\">");
+    	$Page->Print("<html><head><title>$title</title><meta http-equiv=Content-Type content=\"text/html;charset=utf-8\">");
 	$Page->Print("</head><body><center>$title</center>");
 	
 	# バナー表示
