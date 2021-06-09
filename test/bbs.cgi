@@ -257,8 +257,7 @@ sub PrintBBSThreadCreate
 	$Page->Print("Content-type: text/html\n\n");
 	$Page->Print("<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.01 Transitional//EN\" \"http://www.w3.org/TR/html4/loose.dtd\">\n");
 	$Page->Print("<html lang=\"ja\">\n");
-	$Page->Print("<head>\n");
-	$Page->Print(' <meta http-equiv="Content-Type" content="text/html;charset=Shift_JIS">'."\n\n");
+    	$Page->Print("<head><meta http-equiv=Content-Type content=\"text/html;charset=utf-8\">");
 	$Caption->Print($Page, undef);
 	$Page->Print(" <title>$title</title>\n\n");
 	$Page->Print("</head>\n<!--nobanner-->\n");
@@ -427,7 +426,7 @@ sub PrintBBSCookieConfirm
 <!-- 2ch_X:cookie -->
 <head>
 
- <meta http-equiv="Content-Type" content="text/html; charset=Shift_JIS">
+ <meta http-equiv="Content-Type" content="text/html; charset="UTF-8">
 
  <title>■ Verificação de escrita ■</title>
 
@@ -544,7 +543,7 @@ sub PrintBBSJump
 <html>
 <head>
 	<title>Escrito.</title>
-<meta http-equiv="Content-Type" content="text/html; charset=Shift_JIS">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta http-equiv="Refresh" content="5;URL=$bbsPath/">
 </head>
 <!--nobanner-->
