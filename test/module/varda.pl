@@ -638,7 +638,7 @@ sub PrintThreadPreviewOne
    <input type="hidden" name="key" value="$key">
    <input type="hidden" name="time" value="$tm">
    <input type="submit" value="Escrever" name="submit"> 
-   名前：<input type="text" name="FROM" size="19">
+   Nome：<input type="text" name="FROM" size="19">
    E-mail：<input type="text" name="mail" size="19"><br>
    <blockquote style="margin-top:0px;">
     <textarea rows="5" cols="64" name="MESSAGE"></textarea>
@@ -685,7 +685,7 @@ sub PrintResponse
 		$command->execute($this->{'SYS'}, undef, 8);
 	}
 	
-	$Page->Print("   <dt>$n 名前：");
+	$Page->Print("   <dt>$n Nome：");
 	
 	# メール欄有り
 	if ($elem[1] eq '') {
