@@ -96,7 +96,7 @@ sub Initialize
 		'CONV'		=> $Conv,
 		'DAT'		=> $Dat,
 		'PAGE'		=> $Page,
-		'CODE'		=> 'Shift_JIS',
+		'CODE'		=> 'UTF-8',
 	);
 
 	# system inicialização
@@ -189,9 +189,9 @@ sub PrintReadHead
 	$Page->Print(<<HTML);
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html lang="ja">
-<head>
+<head><meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 
- <meta http-equiv=Content-Type content="text/html;charset=Shift_JIS">
+ 
  <meta http-equiv="Content-Style-Type" content="text/css">
 
 HTML
@@ -629,7 +629,7 @@ sub PrintReadError
 	# HTML header saída
 	$Page->Print("Content-type: text/html\n\n");
 	$Page->Print('<html><head><title>ＥＲＲＯＲ！！</title>');
-	$Page->Print("<meta http-equiv=Content-Type content=\"text/html;charset=$code\">");
+	$Page->Print("");
 	$Page->Print('</head><!--nobanner-->');
 	$Page->Print('<html><body>');
 	$Page->Print("<b>$err</b>");
