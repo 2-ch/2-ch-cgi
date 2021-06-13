@@ -56,7 +56,7 @@ sub Init
 	$this->{'THREADS'} = BILBO->new;
 	$this->{'CONV'} = GALADRIEL->new;
 	$this->{'BANNER'} = DENETHOR->new;
-	$this->{'CODE'} = 'sjis';
+	$this->{'CODE'} = 'utf-8';
 	
 	if (!defined $Setting) {
 		require './module/isildur.pl';
@@ -135,7 +135,7 @@ sub CreateIIndex
 	# HTMLヘッダの出力
 	my $title = $Set->Get('BBS_TITLE');
 	my $code = $this->{'CODE'};
-    	$Page->Print("<html><head><title>$title</title><meta http-equiv=Content-Type content=\"text/html;charset=utf-8\">");
+    	$Page->Print("<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"><title>$title</title>");
 	$Page->Print("</head><body><center>$title</center>");
 	
 	# バナー表示
@@ -204,10 +204,10 @@ sub CreateSubback
 	my $code = $this->{'CODE'};
 	$Page->Print(<<HTML);
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-<html lang="ja">
+<html lang="pt">
 <head>
 
- <meta http-equiv="Content-Type" content="text/html;charset=Shift_JIS">
+ 
 
 HTML
 	
@@ -291,10 +291,10 @@ sub PrintIndexHead
 	# HTMLヘッダの出力
 	$Page->Print(<<HEAD);
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-<html lang="ja">
+<html lang="pt">
 <head>
  
- <meta http-equiv="Content-Type" content="text/html;charset=Shift_JIS">
+ 
  <meta http-equiv="Content-Script-Type" content="text/javascript">
  
 HEAD
@@ -590,8 +590,6 @@ BBS.CGI - $ver (Perl)
 </div>
 
 FOOT
-	$Page->Print("<select id="styleSelector"><option value="Default">Default</option><option value="Felino">Felino</option><option value="Iogurte">Iogurte</option><option value="Simulacro">Simulacro</option><option value="Erebos">Erebos</option></select>"
-	$Page->Print("</body>\n</html>\n");
 }
 
 #------------------------------------------------------------------------------------------------------------
