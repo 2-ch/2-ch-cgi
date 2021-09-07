@@ -483,7 +483,7 @@ HTML
 	}
 
 	$Page->Print(<<HTML);
-<input type="submit" value="上記全てを承諾して書き込む"><br>
+<input type="submit" value="Aceitar todos os ítens acima e escrever"><br>
 </form>
 
 <p>
@@ -492,7 +492,7 @@ Caso de mudar é volte no botão voltar reescrevakudasai.
 
 <p>
 Atual, como arasi prevenção cookie não configurado e escrita tornará se não possível.<br>
-<font size="2">(cookieを設定するとこの画面はでなくなります。)</font><br>
+<font size="2">(fazer configuração de cookie e esta tela vai desaparecer.)</font><br>
 </p>
 
 </body>
