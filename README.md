@@ -1,5 +1,4 @@
 # 2-ch CGI
-![](https://img.shields.io/github/license/2-ch/2-ch-cgi")
 
 2-ch CGI é a script open source que roda no keijiban brasileiro [mokoichannel](http://2-ch.heliohost.org)
 
