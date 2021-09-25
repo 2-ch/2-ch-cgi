@@ -1,6 +1,6 @@
 #============================================================================================================
 #
-#	ŠÇ—CGIƒx[ƒXƒ‚ƒWƒ…[ƒ‹
+#	Gerenciamento CGI base module
 #	sauron.pl
 #	---------------------------------------------------------------------------
 #	2003.10.12 start
@@ -15,10 +15,10 @@ require './module/thorin.pl';
 
 #------------------------------------------------------------------------------------------------------------
 #
-#	ƒ‚ƒWƒ…[ƒ‹ƒRƒ“ƒXƒgƒ‰ƒNƒ^ - new
+#	Module constructor - new
 #	-------------------------------------------------------------------------------------
-#	ˆø@”F‚È‚µ
-#	–ß‚è’lFƒ‚ƒWƒ…[ƒ‹ƒIƒuƒWƒFƒNƒg
+#	Argu mentoï¼šsem
+#	Valor de retornoï¼šmodule object
 #
 #------------------------------------------------------------------------------------------------------------
 sub new
@@ -27,12 +27,12 @@ sub new
 	my ($obj, @MnuStr, @MnuUrl);
 	
 	$obj = {
-		'SYS'		=> undef,														# MELKOR•Û
-		'FORM'		=> undef,														# SAMWISE•Û
-		'INN'		=> undef,														# THORIN•Û
-		'MNUSTR'	=> \@MnuStr,													# ‹@”\ƒŠƒXƒg•¶š—ñ
-		'MNUURL'	=> \@MnuUrl,													# ‹@”\ƒŠƒXƒgURL
-		'MNUNUM'	=> 0															# ‹@”\ƒŠƒXƒg”
+		'SYS'		=> undef,														# MELKOR retenÃ§Ã£o
+		'FORM'		=> undef,														# SAMWISE retenÃ§Ã£o
+		'INN'		=> undef,														# THORIN retenÃ§Ã£o
+		'MNUSTR'	=> \@MnuStr,													# FunÃ§Ã£o list coluna de caracteres
+		'MNUURL'	=> \@MnuUrl,													# FunÃ§Ã£o list URL
+		'MNUNUM'	=> 0															# FunÃ§Ã£o list nÃºmero
 	};
 	bless $obj, $this;
 	
@@ -41,11 +41,11 @@ sub new
 
 #------------------------------------------------------------------------------------------------------------
 #
-#	ƒIƒuƒWƒFƒNƒg¶¬ - Create
+#	Object geraÃ§Ã£o - Create
 #	-------------------------------------------------------------------------------------
-#	ˆø@”F$M : MELKORƒ‚ƒWƒ…[ƒ‹
-#			$S : SAMWISEƒ‚ƒWƒ…[ƒ‹
-#	–ß‚è’lFTHORINƒ‚ƒWƒ…[ƒ‹
+#	Argu mentoï¼š$M : MELKOR module
+#			$S : SAMWISE module
+#	Valor de retornoï¼šTHORIN module
 #
 #------------------------------------------------------------------------------------------------------------
 sub Create
@@ -63,11 +63,11 @@ sub Create
 
 #------------------------------------------------------------------------------------------------------------
 #
-#	ƒƒjƒ…[‚Ìİ’è - SetMenu
+#	ConfiguraÃ§Ãµes de menu - SetMenu
 #	-------------------------------------------------------------------------------------
-#	ˆø@”F$str : •\¦•¶š—ñ
-#			$url : ƒWƒƒƒ“ƒvURL
-#	–ß‚è’lF‚È‚µ
+#	Argu mentoï¼š$str : exibiÃ§Ã£o coluna de caracteres
+#			$url : jump URL
+#	Valor de retornoï¼šsem
 #
 #------------------------------------------------------------------------------------------------------------
 sub SetMenu
@@ -83,10 +83,10 @@ sub SetMenu
 
 #------------------------------------------------------------------------------------------------------------
 #
-#	ƒy[ƒWo—Í - Print
+#	Page saÃ­da - Print
 #	-------------------------------------------------------------------------------------
-#	ˆø@”F$ttl : ƒy[ƒWƒ^ƒCƒgƒ‹
-#	–ß‚è’lF‚È‚µ
+#	Argu mentoï¼š$ttl : page title
+#	Valor de retornoï¼šsem
 #
 #------------------------------------------------------------------------------------------------------------
 sub Print
@@ -98,24 +98,24 @@ sub Print
 	$Tad	= THORIN->new;
 	$Tin	= $this->{'INN'};
 	
-	PrintHTML($Tad, $ttl);																# HTMLƒwƒbƒ_o—Í
-	PrintCSS($Tad, $this->{'SYS'});														# CSSo—Í
-	PrintHead($Tad, $ttl, $mode);														# ƒwƒbƒ_o—Í
-	PrintList($Tad, $this->{'MNUNUM'}, $this->{'MNUSTR'}, $this->{'MNUURL'});			# ‹@”\ƒŠƒXƒgo—Í
-	PrintInner($Tad, $Tin, $ttl);														# ‹@”\“à—eo—Í
+	PrintHTML($Tad, $ttl);																# HTML header saÃ­da
+	PrintCSS($Tad, $this->{'SYS'});														# CSS saÃ­da
+	PrintHead($Tad, $ttl, $mode);														# header saÃ­da
+	PrintList($Tad, $this->{'MNUNUM'}, $this->{'MNUSTR'}, $this->{'MNUURL'});			# FunÃ§Ã£o list saÃ­da
+	PrintInner($Tad, $Tin, $ttl);														# FunÃ§Ã£o conteÃºdo saÃ­da
 	PrintCommonInfo($Tad, $this->{'FORM'});
 	PrintFoot($Tad, $this->{'FORM'}->Get('UserName'), $this->{'SYS'}->Get('VERSION'),
-						$this->{'SYS'}->Get('ADMIN')->{'NEWRELEASE'}->Get('Update'));	# ƒtƒbƒ^o—Í
+						$this->{'SYS'}->Get('ADMIN')->{'NEWRELEASE'}->Get('Update'));	# Footer saÃ­da
 	
-	$Tad->Flush(0, 0, '');																# ‰æ–Êo—Í
+	$Tad->Flush(0, 0, '');																# Tela saÃ­da
 }
 
 #------------------------------------------------------------------------------------------------------------
 #
-#	ƒy[ƒWo—Í(ƒƒjƒ…[ƒŠƒXƒg‚È‚µ) - PrintNoList
+#	Page saÃ­da(menu list sem) - PrintNoList
 #	-------------------------------------------------------------------------------------
-#	ˆø@”F$ttl : ƒy[ƒWƒ^ƒCƒgƒ‹
-#	–ß‚è’lF‚È‚µ
+#	Argu mentoï¼š$ttl : page title
+#	Valor de retornoï¼šsem
 #
 #------------------------------------------------------------------------------------------------------------
 sub PrintNoList
@@ -127,22 +127,22 @@ sub PrintNoList
 	$Tad = THORIN->new;
 	$Tin = $this->{'INN'};
 	
-	PrintHTML($Tad, $ttl);															# HTMLƒwƒbƒ_o—Í
-	PrintCSS($Tad, $this->{'SYS'}, $ttl);											# CSSo—Í
-	PrintHead($Tad, $ttl, $mode);													# ƒwƒbƒ_o—Í
-	PrintInner($Tad, $Tin, $ttl);													# ‹@”\“à—eo—Í
-	PrintFoot($Tad, 'NONE', $this->{'SYS'}->Get('VERSION'));						# ƒtƒbƒ^o—Í
+	PrintHTML($Tad, $ttl);															# HTML header saÃ­da
+	PrintCSS($Tad, $this->{'SYS'}, $ttl);											# CSS saÃ­da
+	PrintHead($Tad, $ttl, $mode);													# Header saÃ­da
+	PrintInner($Tad, $Tin, $ttl);													# FunÃ§Ã£o conteÃºdo saÃ­da
+	PrintFoot($Tad, 'NONE', $this->{'SYS'}->Get('VERSION'));						# Footer saÃ­da
 	
-	$Tad->Flush(0, 0, '');															# ‰æ–Êo—Í
+	$Tad->Flush(0, 0, '');															# Tela saÃ­da
 }
 
 #------------------------------------------------------------------------------------------------------------
 #
-#	HTMLƒwƒbƒ_o—Í - PrintHTML
+#	HTML header saÃ­da - PrintHTML
 #	-------------------------------------------
-#	ˆø@”F$T   : THORINƒ‚ƒWƒ…[ƒ‹
-#			$ttl : ƒy[ƒWƒ^ƒCƒgƒ‹
-#	–ß‚è’lF‚È‚µ
+#	Argu mentoï¼š$T   : THORIN module
+#			$ttl : page title
+#	Valor de retornoï¼šsem
 #
 #------------------------------------------------------------------------------------------------------------
 sub PrintHTML
@@ -151,11 +151,11 @@ sub PrintHTML
 	
 	$Page->Print("Content-type: text/html\n\n");
 	$Page->Print(<<HTML);
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-<html lang="ja">
+<!DOCTYPE html>
+<html lang="pt">
 <head>
  
- <title>‚º‚ë‚¿‚á‚ñ‚Ë‚éƒvƒ‰ƒXŠÇ— - [ $ttl ]</title>
+ <title>mokoichannel gerenciamento - [ $ttl ]</title>
  
 HTML
 	
@@ -163,10 +163,10 @@ HTML
 
 #------------------------------------------------------------------------------------------------------------
 #
-#	ƒXƒ^ƒCƒ‹ƒV[ƒgo—Í - PrintCSS
+#	Stylesheet saÃ­da - PrintCSS
 #	-------------------------------------------
-#	ˆø@”F$Page   : THORINƒ‚ƒWƒ…[ƒ‹
-#	–ß‚è’lF‚È‚µ
+#	Argu mentoï¼š$Page   : THORIN module
+#	Valor de retornoï¼šsem
 #
 #------------------------------------------------------------------------------------------------------------
 sub PrintCSS
@@ -177,7 +177,7 @@ sub PrintCSS
 	$data = $Sys->Get('DATA');
 	
 $Page->Print(<<HTML);
- <meta http-equiv=Content-Type content="text/html;charset=Shift_JIS">
+ <meta http-equiv=Content-Type content="text/html;charset=UTF-8">
  
  <meta http-equiv="Content-Script-Type" content="text/javascript">
  <meta http-equiv="Content-Style-Type" content="text/css">
@@ -195,11 +195,11 @@ HTML
 
 #------------------------------------------------------------------------------------------------------------
 #
-#	ƒy[ƒWƒwƒbƒ_o—Í - PrintHead
+#	Page header saÃ­da - PrintHead
 #	-------------------------------------------
-#	ˆø@”F$Page   : THORINƒ‚ƒWƒ…[ƒ‹
-#			$ttl : ƒy[ƒWƒ^ƒCƒgƒ‹
-#	–ß‚è’lF‚È‚µ
+#	Argu mentoï¼š$Page   : THORIN module
+#			$ttl : page title
+#	Valor de retornoï¼šsem
 #
 #------------------------------------------------------------------------------------------------------------
 sub PrintHead
@@ -217,50 +217,50 @@ $Page->Print(<<HTML);
 <div class="MainMenu" align="right">
 HTML
 	
-	# ƒVƒXƒeƒ€ŠÇ—ƒƒjƒ…[
+	# System gerenciamento menu
 	if ($mode == 1) {
 		
 $Page->Print(<<HTML);
- <a href="javascript:DoSubmit('sys.top','DISP','NOTICE');">ƒgƒbƒv</a> |
- <a href="javascript:DoSubmit('sys.bbs','DISP','LIST');">Œf¦”Â</a> |
- <a href="javascript:DoSubmit('sys.user','DISP','LIST');">ƒ†[ƒU[</a> |
- <a href="javascript:DoSubmit('sys.cap','DISP','LIST');">ƒLƒƒƒbƒv</a> |
- <a href="javascript:DoSubmit('sys.capg','DISP','LIST');">‹¤’ÊƒLƒƒƒbƒvƒOƒ‹[ƒv</a> |
- <a href="javascript:DoSubmit('sys.setting','DISP','INFO');">ƒVƒXƒeƒ€İ’è</a> |
- <a href="javascript:DoSubmit('sys.edit','DISP','BANNER_PC');">Šeí•ÒW</a> |
+ <a href="javascript:DoSubmit('sys.top','DISP','NOTICE');">Top</a> |
+ <a href="javascript:DoSubmit('sys.bbs','DISP','LIST');">Keijiban</a> |
+ <a href="javascript:DoSubmit('sys.user','DISP','LIST');">User</a> |
+ <a href="javascript:DoSubmit('sys.cap','DISP','LIST');">Cap</a> |
+ <a href="javascript:DoSubmit('sys.capg','DISP','LIST');">Comum Cap Group</a> |
+ <a href="javascript:DoSubmit('sys.setting','DISP','INFO');">System ConfiguraÃ§Ã£o</a> |
+ <a href="javascript:DoSubmit('sys.edit','DISP','BANNER_PC');">Cada tipo ediÃ§Ã£o</a> |
 HTML
 		
 	}
-	# Œf¦”ÂŠÇ—ƒƒjƒ…[
+	# Keijiban gerenciamento menu
 	elsif ($mode == 2) {
 		
 $Page->Print(<<HTML);
- <a href="javascript:DoSubmit('bbs.thread','DISP','LIST');">ƒXƒŒƒbƒh</a> |
- <a href="javascript:DoSubmit('bbs.pool','DISP','LIST');">ƒv[ƒ‹</a> |
- <a href="javascript:DoSubmit('bbs.kako','DISP','LIST');">‰ß‹ƒƒO</a> |
- <a href="javascript:DoSubmit('bbs.setting','DISP','SETINFO');">Œf¦”Âİ’è</a> |
- <a href="javascript:DoSubmit('bbs.edit','DISP','HEAD');">Šeí•ÒW</a> |
- <a href="javascript:DoSubmit('bbs.user','DISP','LIST');">ŠÇ—ƒOƒ‹[ƒv</a> |
- <a href="javascript:DoSubmit('bbs.cap','DISP','LIST');">ƒLƒƒƒbƒvƒOƒ‹[ƒv</a> |
- <a href="javascript:DoSubmit('bbs.log','DISP','INFO');">ƒƒO‰{——</a> |
+ <a href="javascript:DoSubmit('bbs.thread','DISP','LIST');">Thread</a> |
+ <a href="javascript:DoSubmit('bbs.pool','DISP','LIST');">Pool</a> |
+ <a href="javascript:DoSubmit('bbs.kako','DISP','LIST');">Kako Log</a> |
+ <a href="javascript:DoSubmit('bbs.setting','DISP','SETINFO');">Keijiban ConfiguraÃ§Ã£o</a> |
+ <a href="javascript:DoSubmit('bbs.edit','DISP','HEAD');">Cada Tipo EdiÃ§Ã£o</a> |
+ <a href="javascript:DoSubmit('bbs.user','DISP','LIST');">Gerenciamento Group</a> |
+ <a href="javascript:DoSubmit('bbs.cap','DISP','LIST');">Cap Group</a> |
+ <a href="javascript:DoSubmit('bbs.log','DISP','INFO');">Log NavegaÃ§Ã£o</a> |
 HTML
 		
 	}
-	# ƒXƒŒƒbƒhŠÇ—ƒƒjƒ…[
+	# Thread gerenciamento menu
 	elsif ($mode == 3) {
 		
 $Page->Print(<<HTML);
- <a href="javascript:DoSubmit('thread.res','DISP','LIST');">ƒŒƒXˆê——</a> |
- <a href="javascript:DoSubmit('thread.del','DISP','LIST');">íœƒŒƒXˆê——</a> |
+ <a href="javascript:DoSubmit('thread.res','DISP','LIST');">Resu Lista</a> |
+ <a href="javascript:DoSubmit('thread.del','DISP','LIST');">ApagaÃ§Ã£o Resu Lista</a> |
 HTML
 		
 	}
 	
 $Page->Print(<<HTML);
- <a href="javascript:DoSubmit('login','','');">ƒƒOƒIƒt</a>
+ <a href="javascript:DoSubmit('login','','');">Logoff</a>
 </div>
  
-<div class="MainHead" align="right">0ch+ BBS System Manager</div>
+<div class="MainHead" align="right">2-ch BBS System Manager</div>
 
 <table cellspacing="0" width="100%" height="400">
  <tr>
@@ -270,12 +270,12 @@ HTML
 
 #------------------------------------------------------------------------------------------------------------
 #
-#	‹@”\ƒŠƒXƒgo—Í - PrintList
+#	FunÃ§Ã£o list saÃ­da - PrintList
 #	-------------------------------------------
-#	ˆø@”F$Page   : THORINƒ‚ƒWƒ…[ƒ‹
-#			$str : ‹@”\ƒ^ƒCƒgƒ‹”z—ñ
-#			$url : ‹@”\URL”z—ñ
-#	–ß‚è’lF‚È‚µ
+#	Argu mentoï¼š$Page   : THORIN module
+#			$str : FunÃ§Ã£o title arranjo
+#			$url : FunÃ§Ã£o URL arranjo
+#	Valor de retornoï¼šsem
 #
 #------------------------------------------------------------------------------------------------------------
 sub PrintList
@@ -316,11 +316,11 @@ HTML
 
 #------------------------------------------------------------------------------------------------------------
 #
-#	‹@”\“à—eo—Í - PrintInner
+#	FunÃ§Ã£o conteÃºdo saÃ­da - PrintInner
 #	-------------------------------------------
-#	ˆø@”F$Page1 : THORINƒ‚ƒWƒ…[ƒ‹(MAIN)
-#			$Page2 : THORINƒ‚ƒWƒ…[ƒ‹(“à—e)
-#	–ß‚è’lF‚È‚µ
+#	Argu mentoï¼š$Page1 : THORIN module(MAIN)
+#			$Page2 : THORIN module(conteÃºdo)
+#	Valor de retornoï¼šsem
 #
 #------------------------------------------------------------------------------------------------------------
 sub PrintInner
@@ -340,10 +340,10 @@ HTML
 
 #------------------------------------------------------------------------------------------------------------
 #
-#	‹¤’Êî•ño—Í - PrintCommonInfo
+#	InformaÃ§Ã£o comum saÃ­da - PrintCommonInfo
 #	-------------------------------------------
-#	ˆø@”F$Sys   : 
-#	–ß‚è’lF‚È‚µ
+#	Argu mentoï¼š$Sys   : 
+#	Valor de retornoï¼šsem
 #
 #------------------------------------------------------------------------------------------------------------
 sub PrintCommonInfo
@@ -354,23 +354,23 @@ sub PrintCommonInfo
 	my $sid = $Form->Get('SessionID', '');
 	
 $Page->Print(<<HTML);
-  <!-- ¥‚±‚ñ‚È‚Æ‚±‚ë‚É’n‰º—vÇ(ry -->
+  <!-- â–¼em assim lugar subterranÃªa fortaleza(ry -->
    <input type="hidden" name="MODULE" value="">
    <input type="hidden" name="MODE" value="">
    <input type="hidden" name="MODE_SUB" value="">
    <input type="hidden" name="UserName" value="$user">
    <input type="hidden" name="SessionID" value="$sid">
-  <!-- ¢‚±‚ñ‚È‚Æ‚±‚ë‚É’n‰º—vÇ(ry -->
+  <!-- â–³em assim lugar subterranÃªa fortaleza(ry -->
 HTML
 	
 }
 
 #------------------------------------------------------------------------------------------------------------
 #
-#	ƒtƒbƒ^o—Í - PrintFoot
+#	Footer saÃ­da - PrintFoot
 #	-------------------------------------------
-#	ˆø@”F$Page   : THORINƒ‚ƒWƒ…[ƒ‹
-#	–ß‚è’lF‚È‚µ
+#	Argu mentoï¼š$Page   : THORIN module
+#	Valor de retornoï¼šsem
 #
 #------------------------------------------------------------------------------------------------------------
 sub PrintFoot
@@ -396,11 +396,11 @@ HTML
 
 #------------------------------------------------------------------------------------------------------------
 #
-#	Š®—¹‰æ–Ê‚Ìo—Í
+#	SaÃ­da da tela de finalizaÃ§Ã£o
 #	-------------------------------------------------------------------------------------
-#	@param	$processName	ˆ—–¼
-#	@param	$pLog	ˆ—ƒƒO
-#	@return	‚È‚µ
+#	@param	$processName	Nome do processo
+#	@param	$pLog	Processo log
+#	@return	sem
 #
 #------------------------------------------------------------------------------------------------------------
 sub PrintComplete
@@ -417,15 +417,15 @@ $Page->Print(<<HTML);
     <td>
     
     <div class="oExcuted">
-     $processName‚ğ³í‚ÉŠ®—¹‚µ‚Ü‚µ‚½B
+     $processName corretamente finalizou.
     </div>
    
-    <div class="LogExport">ˆ—ƒƒO</div>
+    <div class="LogExport">Processo log</div>
     <hr>
     <blockquote class="LogExport">
 HTML
 	
-	# ƒƒO‚Ì•\¦
+	# Log exibiÃ§Ã£o
 	foreach $text (@$pLog) {
 		$Page->Print("     $text<br>\n");
 	}
@@ -442,10 +442,10 @@ HTML
 
 #------------------------------------------------------------------------------------------------------------
 #
-#	ƒGƒ‰[‚Ì•\¦
+#	ExibiÃ§Ã£o de error
 #	-------------------------------------------------------------------------------------
-#	@param	$pLog	ƒƒO—p
-#	@return	‚È‚µ
+#	@param	$pLog	logç”¨
+#	@return	sem
 #
 #------------------------------------------------------------------------------------------------------------
 sub PrintError
@@ -456,7 +456,7 @@ sub PrintError
 	
 	$Page = $this->{'INN'};
 	
-	# ƒGƒ‰[ƒR[ƒh‚Ì’Šo
+	# ExtraÃ§Ã£o de error code
 	$ecode = pop @$pLog;
 	
 $Page->Print(<<HTML);
@@ -468,32 +468,32 @@ $Page->Print(<<HTML);
 HTML
 	
 	if ($ecode == 1000) {
-		$Page->Print("     ERROR:$ecode - –{‹@”\\‚Ìˆ—‚ğÀs‚·‚éŒ ŒÀ‚ª‚ ‚è‚Ü‚¹‚ñB\n");
+		$Page->Print("     ERROR:$ecode - NÃ£o hÃ¡ permissÃ£o para executar o processamento desta funÃ§Ã£o.\n");
 	}
 	elsif ($ecode == 1001) {
-		$Page->Print("     ERROR:$ecode - “ü—Í•K{€–Ú‚ª‹ó—“‚É‚È‚Á‚Ä‚¢‚Ü‚·B\n");
+		$Page->Print("     ERROR:$ecode - Os itens de entrada necessÃ¡rios estÃ£o em branco.\n");
 	}
 	elsif ($ecode == 1002) {
-		$Page->Print("     ERROR:$ecode - İ’è€–Ú‚É‹K’èŠO‚Ì•¶š‚ªg—p‚³‚ê‚Ä‚¢‚Ü‚·B\n");
+		$Page->Print("     ERROR:$ecode - EstÃ¡ sendo usado caracteres fora de estipulaÃ§Ã£o em item de configuraÃ§Ãµes.\n");
 	}
 	elsif ($ecode == 2000) {
-		$Page->Print("     ERROR:$ecode - Œf¦”ÂƒfƒBƒŒƒNƒgƒŠ‚Ìì¬‚É¸”s‚µ‚Ü‚µ‚½B<br>\n");
-		$Page->Print("     ƒp[ƒ~ƒbƒVƒ‡ƒ“A‚Ü‚½‚ÍŠù‚É“¯–¼‚ÌŒf¦”Â‚ªì¬‚³‚ê‚Ä‚¢‚È‚¢‚©‚ğŠm”F‚µ‚Ä‚­‚¾‚³‚¢B\n");
+		$Page->Print("     ERROR:$ecode - Falhou em criaÃ§Ã£o em keijiban directory.<br>\n");
+		$Page->Print("     Permission, ou keijiban com o mesmo nome jÃ¡ nÃ£o foi criado ka verifique, por favor.\n");
 	}
 	elsif ($ecode == 2001) {
-		$Page->Print("     ERROR:$ecode - SETTING.TXT‚Ì¶¬‚É¸”s‚µ‚Ü‚µ‚½B\n");
+		$Page->Print("     ERROR:$ecode - Falhou em geraÃ§Ã£o de SETTING.TXT.\n");
 	}
 	elsif ($ecode == 2002) {
-		$Page->Print("     ERROR:$ecode - Œf¦”Â\\¬—v‘f‚Ì¶¬‚É¸”s‚µ‚Ü‚µ‚½B\n");
+		$Page->Print("     ERROR:$ecode - Falhou em geraÃ§Ã£o de elemento de composiÃ§Ã£o de keijiban.\n");
 	}
 	elsif ($ecode == 2003) {
-		$Page->Print("     ERROR:$ecode - ‰ß‹ƒƒO‰Šúî•ñ‚Ì¶¬‚É¸”s‚µ‚Ü‚µ‚½B\n");
+		$Page->Print("     ERROR:$ecode - Falhou em geraÃ§Ã£o de informaÃ§Ã£o inicial de kako log.\n");
 	}
 	elsif ($ecode == 2004) {
-		$Page->Print("     ERROR:$ecode - Œf¦”Âî•ñ‚ÌXV‚É¸”s‚µ‚Ü‚µ‚½B\n");
+		$Page->Print("     ERROR:$ecode - Falhou em atualizaÃ§Ã£o de keijiban informaÃ§Ã£o.\n");
 	}
 	else {
-		$Page->Print("     ERROR:$ecode - •s–¾‚ÈƒGƒ‰[‚ª”­¶‚µ‚Ü‚µ‚½B\n");
+		$Page->Print("     ERROR:$ecode - Erro desconhecido ocorreu.\n");
 	}
 	
 $Page->Print(<<HTML);
@@ -501,7 +501,7 @@ $Page->Print(<<HTML);
     
 HTML
 
-	# ƒGƒ‰[ƒƒO‚ª‚ ‚ê‚Îo—Í‚·‚é
+	# Se tiver error log fazer saÃ­da
 	if (@$pLog) {
 		$Page->Print('<hr>');
 		$Page->Print("    <blockquote>");
@@ -521,6 +521,6 @@ HTML
 }
 
 #============================================================================================================
-#	ƒ‚ƒWƒ…[ƒ‹I’[
+#	Module terminaÃ§Ã£o
 #============================================================================================================
 1;
