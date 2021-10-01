@@ -500,7 +500,7 @@ THREAD
 		$Page->Print(<<KAKIKO);
     <div style="font-weight:bold;">
      <a href="$allPath">Ler tudo</a>
-     <a href="$lastPath">Mais Novos 50</a>
+     <a href="$lastPath">Mais novo 50</a>
      <a href="$numPath">1-100</a>
      <a href="#top">Top do ita</a>
      <a href="./">Reload</a>
@@ -587,7 +587,7 @@ FORM
 	
 	$Page->Print(<<FOOT);
 <div style="margin-top:1.2em;">
-<a href="http://2-ch.heliohost.org/">2-channel</a>
+<a href="http://2-ch.heliohost.org/">mokoichannel</a>
 BBS.CGI - $ver (Perl)
 </div>
 
