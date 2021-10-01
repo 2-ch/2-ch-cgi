@@ -1,7 +1,7 @@
 #!/usr/bin/perl
 #============================================================================================================
 #
-#	‹K§ˆê——•\¦—pCGI
+#	Lista de regulamentaÃ§Ã£o exibiÃ§Ã£oç”¨CGI
 #	madakana.cgi
 #	---------------------------------------------------------------------------
 #	2011.03.18 start
@@ -16,15 +16,15 @@ no warnings 'once';
 
 BEGIN { use lib './perllib'; }
 
-# CGI‚ÌÀsŒ‹‰Ê‚ğI—¹ƒR[ƒh‚Æ‚·‚é
+# Usar resultado de execuÃ§Ã£o CGI como fim code
 exit(MADAKANA());
 
 #------------------------------------------------------------------------------------------------------------
 #
-#	madakana.cgiƒƒCƒ“
+#	madakana.cgi main
 #	-------------------------------------------------------------------------------------
-#	@param	‚È‚µ
-#	@return	‚È‚µ
+#	@param	sem
+#	@return	sem
 #
 #------------------------------------------------------------------------------------------------------------
 sub MADAKANA
@@ -35,16 +35,16 @@ sub MADAKANA
 	require './module/thorin.pl';
 	$Page = new THORIN;
 	
-	# ‰Šú‰»‚É¬Œ÷‚µ‚½‚ç“à—e‚ğ•\¦
+	# Se a inicializaÃ§Ã£o tiver sucesso exibiÃ§Ã£o de conteÃºdo 
 	if (($err = Initialize(\%SYS, $Page)) == 0) {
 		
-		# ƒwƒbƒ_•\¦
+		# Header exibiÃ§Ã£o
 		PrintMadaHead(\%SYS, $Page);
 		
-		# “à—e•\¦
+		# ExibiÃ§Ã£o de conteÃºdo
 		PrintMadaCont(\%SYS, $Page);
 		
-		# ƒtƒbƒ^•\¦
+		# Footer exibiÃ§Ã£o
 		PrintMadaFoot(\%SYS, $Page);
 		
 	}
@@ -60,10 +60,10 @@ sub MADAKANA
 
 #------------------------------------------------------------------------------------------------------------
 #
-#	madakana.cgi‰Šú‰»E‘O€”õ
+#	madakana.cgi inicializaÃ§Ã£oãƒ»antes preparaÃ§Ã£o
 #	-------------------------------------------------------------------------------------
-#	@param	‚È‚µ
-#	@return	‚È‚µ
+#	@param	sem
+#	@return	sem
 #
 #------------------------------------------------------------------------------------------------------------
 sub Initialize
@@ -83,19 +83,19 @@ sub Initialize
 		'SYS'	=> $oSYS,
 		'CONV'	=> $oCONV,
 		'PAGE'	=> $Page,
-		'CODE'	=> 'Shift_JIS',
+		'CODE'	=> 'UTF-8',
 	);
 	
 	$pSYS->{'FORM'} = SAMWISE->new($oSYS->Get('BBSGET')),
 	
-	# ƒVƒXƒeƒ€‰Šú‰»
+	# System inicializaÃ§Ã£o
 	$oSYS->Init();
 	
 	
-	# –²‚ªL‚ª‚è‚ñ‚®
+	# Sonho estÃ¡ expandingu
 	$oSYS->{'MainCGI'} = $pSYS;
 	
-	# ƒzƒXƒgî•ñİ’è(DNS‹tˆø‚«)
+	# Host informaÃ§Ã£o configuraÃ§Ã£o(DNS resoluÃ§Ã£o reversa)
 	$ENV{'REMOTE_HOST'} = $oCONV->GetRemoteHost() unless ($ENV{'REMOTE_HOST'});
 	$pSYS->{'FORM'}->Set('HOST', $ENV{'REMOTE_HOST'});
 	
@@ -105,10 +105,10 @@ sub Initialize
 
 #------------------------------------------------------------------------------------------------------------
 #
-#	madakana.cgiƒwƒbƒ_o—Í
+#	madakana.cgi header saÃ­da
 #	-------------------------------------------------------------------------------------
-#	@param	‚È‚µ
-#	@return	‚È‚µ
+#	@param	sem
+#	@return	sem
 #
 #------------------------------------------------------------------------------------------------------------
 sub PrintMadaHead
@@ -130,8 +130,8 @@ sub PrintMadaHead
 	
 	$Page->Print("Content-type: text/html\n\n");
 	$Page->Print(<<HTML);
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-<html lang="ja">
+<!DOCTYPE html>
+<html lang="pt">
 <head>
 
  <meta http-equiv="Content-Type" content="text/html;charset=$code">
@@ -142,24 +142,24 @@ HTML
 	
 	$Caption->Print($Page, undef);
 	
-	$Page->Print(" <title>‚Ü‚¾‚©‚ÈA‚Ü‚¾‚©‚È</title>\n\n");
+	$Page->Print(" <title>Ainda kana, Ainda kana</title>\n\n");
 	$Page->Print("</head>\n<!--nobanner-->\n<body>\n");
 	
-	# ƒoƒi[o—Í
+	# Banner saÃ­da
 	$Banner->Print($Page, 100, 2, 0) if ($Sys->{'SYS'}->Get('BANNER'));
 	
 	$Page->Print(<<HTML);
 <div style="color:navy;">
-<h1 style="font-size:1em;font-weight:normal;margin:0;">‚Ü‚¾‚©‚ÈA‚Ü‚¾‚©‚ÈA‚Ü‚È‚©‚È(‹K§ˆê——•\\)</h1>
+<h1 style="font-size:1em;font-weight:normal;margin:0;">Ainda kana, ainda kana, aina kana(Tabela lista de regulamentaÃ§Ã£o\)</h1>
 <p style="margin:0;">
-‚ ‚È‚½‚ÌƒŠƒ‚ƒz[<span style="color:red;font-weight:bold;">$HOST</span>]
+Seu remoho [<span style="color:red;font-weight:bold;">$HOST</span>]
 </p>
 <p>
-by <font color="green">‚º‚ë‚¿‚á‚ñ‚Ë‚éƒvƒ‰ƒX š</font>
+by <font color="green">ãœã‚ã¡ã‚ƒã‚“ã­ã‚‹ãƒ—ãƒ©ã‚¹ â˜…</font>
 </p>
 <p>
 ##############################################################################<br>
-# ‚±‚±‚©‚ç<br>
+# De aqui<br>
 </p>
 HTML
 	
@@ -167,10 +167,10 @@ HTML
 
 #------------------------------------------------------------------------------------------------------------
 #
-#	madakana.cgi“à—eo—Í
+#	madakana.cgi conteÃºdo saÃ­da
 #	-------------------------------------------------------------------------------------
-#	@param	‚È‚µ
-#	@return	‚È‚µ
+#	@param	sem
+#	@return	sem
 #
 #------------------------------------------------------------------------------------------------------------
 sub PrintMadaCont
@@ -190,17 +190,17 @@ sub PrintMadaCont
 	$BBSpath	= $Sys->{'SYS'}->Get('BBSPATH');
 	
 	#$sys->Set('HITS', $line);
-	# BBSƒZƒbƒg‚Ìæ“¾
+	# AquisiÃ§Ã£o de BBS set
 	$BBS->GetKeySet('ALL', '', \@BBSkey);
 	
-	# ƒnƒbƒVƒ…‚É‹l‚ß‚Ş
+	# Embale em hash
 	foreach my $id (@BBSkey) {
 		$BBSs{$BBS->Get('DIR', $id)} = $BBS->Get('NAME', $id);
 	}
 	
 	foreach my $dir ( keys %BBSs ) {
 		
-		# ”ÂƒfƒBƒŒƒNƒgƒŠ‚É.0ch_hidden‚Æ‚¢‚¤ƒtƒ@ƒCƒ‹‚ª‚ ‚ê‚Î“Ç‚İ”ò‚Î‚·
+		# Se no directory de ita tiver um arquivo chamado .0ch_hidden pular
 		next if ( -e "$BBSpath/$dir/.0ch_hidden" );
 		
 		$Sys->{'SYS'}->Set('BBS', $dir);
@@ -224,7 +224,7 @@ sub PrintMadaCont
 			my ( $type, $method ) = split(/<>/, $line, 2);
 			
 			if ( $type eq 'enable' ) {
-				$Page->Print('<font color="red">¦‚±‚Ì”Â‚ÍˆÈ‰º‚Ìƒ†[ƒU[‚Ì‚İ‘‚«‚İ‚ğs‚¤‚±‚Æ‚ª‚Å‚«‚Ü‚·B</font><br>'."\n");
+				$Page->Print('<font color="red">â€» Neste ita apenas os users abaixo conseguem escrever.</font><br>'."\n");
 				$color = "blue";
 			}
 			
@@ -263,7 +263,7 @@ sub PrintMadaFoot
 	
 	$Page->Print(<<HTML);
 <p>
-# ‚±‚±‚Ü‚Å<br>
+# AtÃ© aqui<br>
 ##############################################################################<br>
 </p>
 </div>
@@ -271,7 +271,7 @@ sub PrintMadaFoot
 <hr>
 
 <div>
-<a href="http://zerochplus.sourceforge.jp/">‚º‚ë‚¿‚á‚ñ‚Ë‚éƒvƒ‰ƒX</a>
+<a href="http://2-ch.heliohost.org/">mokoichannel</a>
 MADAKANA.CGI - $ver
 </div>
 
@@ -283,10 +283,10 @@ HTML
 
 #------------------------------------------------------------------------------------------------------------
 #
-#	madakana.cgiƒGƒ‰[•\¦
+#	madakana.cgi error exibiÃ§Ã£o
 #	-------------------------------------------------------------------------------------
-#	@param	‚È‚µ
-#	@return	‚È‚µ
+#	@param	sem
+#	@return	sem
 #
 #------------------------------------------------------------------------------------------------------------
 sub PrintMadaError
@@ -294,11 +294,11 @@ sub PrintMadaError
 	my ($Sys, $Page, $err) = @_;
 	my ($code);
 	
-	$code = 'Shift_JIS';
+	$code = 'UTF-8';
 	
-	# HTMLƒwƒbƒ_‚Ìo—Í
+	# HTML header saÃ­da
 	$Page->Print("Content-type: text/html\n\n");
-	$Page->Print('<html><head><title>‚d‚q‚q‚n‚qII</title>');
+	$Page->Print('<html><head><title>ï¼¥ï¼²ï¼²ï¼¯ï¼²ï¼ï¼</title>');
 	$Page->Print("<meta http-equiv=Content-Type content=\"text/html;charset=$code\">");
 	$Page->Print('</head><!--nobanner-->');
 	$Page->Print('<html><body>');
