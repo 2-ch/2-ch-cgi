@@ -458,11 +458,11 @@ HTML
 
 <div style="font-weight:bold;">
 Verificação de contribuição<br>
-・Contribuinte é, aceita que a responsabilidade que surge com relação a contribuição volta ao contribuinte.<br>
-・Contribuinte é, com relação a contribuições de anúncios sem relevância ao tema, concorda em pagar uma taxa razoável.<br>
-・Contribuinte é, Sobre o conteúdo contribuido, permite que o operador do keijiban copie, salve, cite, reimprima entre outros usos.<br>
+・Contribuinte aceita que a responsabilidade que surge com relação a contribuição volta ao contribuinte.<br>
+・Contribuinte, com relação a contribuições de anúncios sem relevância ao tema, concorda em pagar uma taxa razoável.<br>
+・Contribuinte, sobre o conteúdo contribuído, permite que o operador do keijiban copie, salve, cite, reimprima entre outros usos.<br>
 　Também, a respeito do operador do keijiban, concorda não exercer em absoluto nenhum direito moral.<br>
-・Contribuinte é, a respeito dos terceiros indicados pelo operador do keijiban, concorda absolutamente não fazer licença de coisas protegidas por direitos autorais.<br>
+・Contribuinte, a respeito dos terceiros indicados pelo operador do keijiban, concorda absolutamente não fazer licença de coisas protegidas por direitos autorais.<br>
 </div>
 
 <form method="POST" action="./bbs.cgi?guid=ON">
