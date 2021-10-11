@@ -1,7 +1,7 @@
 #!/usr/bin/perl
 #============================================================================================================
 #
-#	Busca用CGI(matiagaetesumimasen)
+#	Busca用CGI(matigaetesumimasen)
 #	search.cgi
 #	-----------------------------------------------------
 #	2003.11.22 star
@@ -121,7 +121,7 @@ sub PrintHead
   <form action="./search.cgi" method="POST">
   <table border="0">
    <tr>
-    <td>Procura modo</td>
+    <td>Busca modo</td>
     <td>
     <select name="MODE">
 HTML
