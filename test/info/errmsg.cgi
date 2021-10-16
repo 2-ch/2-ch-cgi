@@ -1,48 +1,48 @@
-# 100`“ü—Í“à—e
-100<>ƒTƒuƒWƒFƒNƒg’·‚·‚¬<>ƒTƒuƒWƒFƒNƒg‚ª’·‚·‚¬‚Ü‚·I
-101<>–¼‘O’·‚·‚¬<>–¼‘O‚ª’·‚·‚¬‚Ü‚·I
-102<>ƒ[ƒ‹’·‚·‚¬<>ƒ[ƒ‹ƒAƒhƒŒƒX‚ª’·‚·‚¬‚Ü‚·I
-103<>–{•¶’·‚·‚¬<>–{•¶‚ª’·‚·‚¬‚Ü‚·I
-104<>1s’·‚·‚¬<>’·‚·‚¬‚és‚ª‚ ‚è‚Ü‚·I
-105<>‰üs‘½‚·‚¬<>‰üs‚ª‘½‚·‚¬‚Ü‚·I
-106<>ƒAƒ“ƒJ[‘½‚·‚¬<>ƒŒƒXƒAƒ“ƒJ[ƒŠƒ“ƒN‚ª‘½‚·‚¬‚Ü‚·I
-150<>ƒ^ƒCƒgƒ‹‚ª–³‚¢<>ƒTƒuƒWƒFƒNƒg‚ª‘¶İ‚µ‚Ü‚¹‚ñI
-151<>–{•¶‚ª–³‚¢<>–{•¶‚ª‚ ‚è‚Ü‚¹‚ñI
-152<>–¼‘O‚ª–³‚¢<>–¼‘O‚¢‚ê‚Ä‚¿‚åB
-# 200`Œf¦”Â‹K§
-200<>ƒXƒŒƒbƒh’â~<>‚±‚ÌƒXƒŒƒbƒh‚Í’â~‚³‚ê‚Ä‚Ü‚·B‚à‚¤‘‚¯‚È‚¢BBB
-201<>‘‚«‚İŒÀŠE<>{!RESMAX!}‚ğ’´‚¦‚Ä‚Ü‚·B‚±‚ÌƒXƒŒƒbƒh‚É‚Í‚à‚¤‘‚¯‚È‚¢BBB
-202<>ƒXƒŒƒbƒhˆÚ“]<>‚±‚ÌƒXƒŒƒbƒh‚ÍˆÚ“]‚³‚ê‚½‚æ‚¤‚Å‚·BÚ‚µ‚­‚Íi—ª
-203<>“Çæê—p<>Œ»İ‚±‚ÌŒf¦”Â‚Í“Çæê—p‚Å‚·B‚±‚±‚Í‘Ò‚Â‚µ‚©‚È‚¢BBB
-204<>ƒXƒŒƒbƒh‹K§<>Œg‘Ñ‚©‚ç‚ÌƒXƒŒƒbƒhì¬‚ÍƒLƒƒƒbƒv‚Ì‚İ‰Â”\‚Å‚·B<br>PC‚©‚ç‚µ‚Ä‚İ‚Ä‚­‚¾‚³‚¢B
-205<>CGI‹Ö~<>Œ»İ‚±‚ÌŒf¦”Â‚Å‚ÍCGI‚Ìg—p‚ª‹Ö~‚³‚ê‚Ä‚Ü‚·<br>index‚¾‚¯‚Å‚¨Šy‚µ‚İ‚­‚¾‚³‚¢B
-206<>ƒTƒCƒYƒI[ƒo[<>datƒtƒ@ƒCƒ‹‚ÌƒTƒCƒY‚ªŒÀŠE‚ğ’´‚¦‚Ü‚µ‚½BV‚µ‚¢ƒXƒŒƒbƒh‚ğì¬‚µ‚Ä‚­‚¾‚³‚¢B
-207<>ŠCŠO‹ø<>JPƒhƒƒCƒ“ˆÈŠO‚©‚ç‚ÌƒXƒŒƒbƒhì¬‚ğ‹K§‚µ‚Ä‚¢‚Ü‚·B
-# 200`Œf¦”Â‹K§
-500<>ƒXƒŒƒbƒh—§‚Ä‚·‚¬<>ƒXƒŒƒbƒh—§‚Ä‚·‚¬‚Å‚·B‚à‚¤‚¿‚å‚¢‚à‚¿‚Â‚¢‚Ä‚­‚¾‚³‚¢B
-501<>˜A‘±“Še<>˜A‘±“Še‚Å‚·‚©HH
-502<>“ñd‚©‚«‚±<>“ñd‚©‚«‚±‚Å‚·‚©HH
-503<>‚à‚Ü‚¢‚ç‚à‚¿‚Â‚¯B<>‚à‚¤‚¿‚å‚Á‚Æ—‚¿’…‚¢‚Ä‘‚«‚±‚İ‚µ‚Ä‚­‚¾‚³‚¢B{!WAIT!}•b‚®‚ç‚¢B
-504<>ƒXƒŒƒbƒh‹K§<>Œ»İ‚±‚Ì”Â‚ÌƒXƒŒƒbƒhì¬‚ÍƒLƒƒƒbƒv‚Ì‚İ‰Â”\‚Å‚·B<br>ŠÇ—l‚É‘Š’k‚µ‚Ä‚­‚¾‚³‚¢BBB
-505<>Samba‹K§1<>{!SAMBATIME!} sec ‚½‚½‚È‚¢‚Æ‘‚¯‚Ü‚¹‚ñB({!SAMBA!}‰ñ–ÚA{!WAIT!} sec ‚µ‚©‚½‚Á‚Ä‚È‚¢)<br>\n<br>\n¡‚Ì‚Æ‚±‚ëAƒLƒƒƒbƒvˆÈŠO‚É‰ñ”ğ‚·‚é•û–@‚Í‚ ‚è‚Ü‚¹‚ñB\n
-506<>Samba‹K§2<>˜A‘Å‚µ‚È‚¢‚Å‚­‚¾‚³‚¢B‚à‚¤‚»‚ë‚»‚ë‹K§ƒŠƒXƒg‚É“ü‚ê‚Ü‚·‚æBB(P[P)ƒjƒ„ƒŠƒb<br>\n<br>\n\n
-507<>Samba‹K§3<>‚à‚¤‚¸‚Á‚Æ‘‚¯‚Ü‚¹‚ñ‚æB<br>\n<br>\n‚ ‚È‚½‚ÍA‹K§ƒŠƒXƒg‚É’Ç‰Á‚³‚ê‚Ü‚µ‚½B<br><br>\ny‰ğœ‚·‚é•û–@z<br>\n{!WAIT!}•ªˆÈã‰SÒ‚Ì•ûX‚ğ—D‚µ‚­“±‚¢‚Ä‚ ‚°‚Ä‚­‚¾‚³‚¢B<br>\n‚±‚êˆÈŠO‚É‰ğœ‚Ì•û–@‚Í‚ ‚è‚Ü‚¹‚ñB<br>\n
-508<>Samba‹K§’†<>‚Ü‚¾‘‚¯‚Ü‚¹‚ñ‚æB<br><br>@@@@‚ ‚È‚½‚ÍA‹K§ƒŠƒXƒg‚É’Ç‰Á‚³‚ê‚Ä‚¢‚Ü‚·B <br><br>@@@@y‰ğœ‚·‚é•û–@z<br>@@@@{!WAIT!}•ªˆÈã‰SÒ‚Ì•ûX‚ğ—D‚µ‚­“±‚¢‚Ä‚ ‚°‚Ä‚­‚¾‚³‚¢B<br>@@@@‚±‚êˆÈŠO‚É‰ğœ‚Ì•û–@‚Í‚ ‚è‚Ü‚¹‚ñB<br>---------- 
-600<>NGƒ[ƒh<>NGƒ[ƒh‚ªŠÜ‚Ü‚ê‚Ä‚Ü‚·B”²‚©‚È‚¢‚Æ‘‚«‚İ‚Å‚«‚Ü‚¹‚ñB
-601<>‹K§ƒ†[ƒU<>ƒAƒNƒZƒX‹K§’†‚Å‚·II({!HITS!})
-# 890`BEƒVƒXƒeƒ€ƒGƒ‰[Œn
-890<>î•ñæ“¾¸”s<>BEƒ†[ƒU[î•ñ‚Ìæ“¾‚É¸”s‚µ‚Ü‚µ‚½B
-891<>Ú‘±¸”s<>be.2ch.net‚ÉÚ‘±‚Å‚«‚Ü‚¹‚ñ‚Å‚µ‚½B({!CODE!})
-892<>BEƒƒOƒCƒ“¸”s<>BEƒƒOƒCƒ“‚É¸”s‚µ‚Ü‚µ‚½B({!CHK!})
-893<>BEƒƒOƒCƒ“•K{<><a href="http://be.2ch.net/">be.2ch.net</a>‚ÅƒƒOƒCƒ“‚µ‚Ä‚È‚¢‚Æ‘‚¯‚Ü‚¹‚ñB
-894<>BE_TYPE2‹K§<>BeƒƒOƒCƒ“‚µ‚Ä‚­‚¾‚³‚¢(t)B<a href="http://be.2ch.net/">be.2ch.net</a>
-# 900`ƒXƒŒƒbƒhƒGƒ‰[Œn
-900<>ƒXƒŒƒbƒhw’è‚ª•Ï‚Å‚·<>ƒXƒŒƒbƒhƒL[‚É”šˆÈŠO‚ª‚ ‚è‚»‚¤‚Å‚·B<br>‚à‚¤ˆê“x‚æ‚­Šm‚©‚ß‚Ä‚¿‚åB
-901<>ƒXƒŒƒbƒhw’è‚ª•Ï‚Å‚·<>ƒXƒŒƒbƒhƒL[‚Ì”‚ª‚¨‚©‚µ‚¢‚Å‚·‚æ‚ñB<br>‚à‚¤ˆê“x‚æ‚­Šm‚©‚ß‚Ä‚¿‚åB
-902<>ƒXƒŒƒbƒhw’è‚ª•Ï‚Å‚·<>‘‚«‚à‚¤‚Æ‚µ‚Ä‚¢‚éƒXƒŒƒbƒh‚Í‘¶İ‚µ‚È‚¢‚©Aíœ‚³‚ê‚Ä‚¢‚Ü‚·BBB
-# 950`ƒVƒXƒeƒ€ƒGƒ‰[Œn
-950<>’[––ŒÅ—Lî•ñ•s–¾<>’[––ŒÅ—Lî•ñ‚ğ‘—M‚µ‚Ä‚­‚¾‚³‚¢B
-997<>‚o‚q‚n‚w‚x‹K§<>ŒöŠJ‚o‚q‚n‚w‚x‚©‚ç‚Ì“Še‚Íó‚¯•t‚¯‚Ä‚¢‚Ü‚¹‚ñII
-998<>ƒuƒ‰ƒEƒU•Ï‚Å‚·‚æ‚ñ<>ƒAƒNƒZƒX•s³‚Å‚·B‚±‚ÌCGI‚ÍŠO•”‚©‚ç‚ÌƒAƒNƒZƒX‚Í”F‚ß‚Ä‚È‚¢‚Å‚·BB
-999<>ƒuƒ‰ƒEƒU•Ï‚Å‚·‚æ‚ñ<>ƒtƒH[ƒ€î•ñ‚ª³‚µ‚­“Ç‚ß‚È‚¢‚Å‚·B
-990<>ƒVƒXƒeƒ€ƒGƒ‰[<>ƒVƒXƒeƒ€‚ª•Ï‚Å‚·BƒTƒ|[ƒg”Å‚Å•·‚¢‚½‚Ù‚¤‚ª‚¢‚¢‚©‚àBB
+# 100ï½entrada conteÃºdo
+100<>Subject longosugi<>Subject Ã© longosugimasu!
+101<>Nome longosugi<>Nome Ã© longosugimasu!
+102<>Mail longosugi<>Mail address Ã© longosugimasu!
+103<>Corpo longosugi<>Corpo Ã© longosugimasu!
+104<>1 linha longosugi<>HÃ¡ linhas longasugiru!
+105<>Quebra de linha vÃ¡riosugi<>Quebra de linha Ã© vÃ¡riosugimasu!
+106<>Anchor vÃ¡riosugi<>Resu anchor link Ã© vÃ¡riosugimasu!
+150<>NÃ£o hÃ¡ title<>Subject nÃ£o existe!
+151<>NÃ£o hÃ¡ corpo<>NÃ£o hÃ¡ corpo!
+152<>NÃ£o hÃ¡ nome<>Nome insiratyo.
+# 200ï½keijiban regulamentaÃ§Ã£o
+200<>Thread paralisaÃ§Ã£o<>Esta thread foi paralisada. NÃ£o pode escrever mais...
+201<>Limite de escrita<>Ultrapassou {!RESMAX!}. Nesta thread nÃ£o pode mais escrever...
+202<>Thread transferÃªncia<>Parece que esta thread foi transferida. Em detalhe Ã©ï¼ˆç•¥
+203<>Leitura uso exclusivo<>Atualmente este keijiban Ã© uso exclusivo de leitura. Aqui nÃ£o tem escolha a nÃ£o ser esperar...
+204<>Thread regulamentaÃ§Ã£o<>CriaÃ§Ã£o de thread de celular Ã© possÃ­vel apenas cap.<br>Experimente do seu PC.
+205<>CGI proibiÃ§Ã£o<>Atualmente neste keijiban o uso de CGI estÃ¡ proibido<br>Aproveite apenas o index
+206<>Size over<>Size de dat file ultrapassou o limite. Crie uma nova thread, por favor.
+207<>Marforaä¸²<>Regulamentando criaÃ§Ã£o de thread fora de BR domain.
+# 200ï½keijiban regulamentaÃ§Ã£o
+500<>Thread levantesugi<>Ã‰ thread levantesugi. mou choi mochitsuite, por favor.
+501<>ContribuiÃ§Ã£o consecutiva<>Ã‰ contribuiÃ§Ã£o consecutiva??
+502<>Dupla kakiko<>Ã‰ dupla kakiko??
+503<>momairamotitsuke.<>Mou chotto acalma-te e escreva, por favor. Cerca de {!WAIT!} segundos.
+504<>Thread regulamentaÃ§Ã£o<>Atualmente a criaÃ§Ã£o de thread deste ita Ã© apenas cap possÃ­vel.<br>Consulte o administrador kudasai...
+505<>Samba RegulamentaÃ§Ã£o 1<>AtÃ© decorrer {!SAMBATIME!} sec nÃ£o pode escrever. ({!SAMBA!} vezã€{!WAIT!} sec apenas)<br>\n<br>\Neste ponto, Fora de cap nÃ£o hÃ¡ mÃ©todo de evitar.\n
+506<>Samba RegulamentaÃ§Ã£o 2<>Por favor, nÃ£o faÃ§a batida consecutiva. JÃ¡ sorosoro entrarÃ¡ na lista de regulamentaÃ§Ã£o..(ï¿£ãƒ¼ï¿£)ãƒ‹ãƒ¤ãƒªãƒƒ<br>\n<br>\n\n
+507<>Samba RegulamentaÃ§Ã£o 3<>jÃ¡ sempre nÃ£o pode escrever.<br>\n<br>\nVocÃª foi adicionado Ã  lista de regulamentaÃ§Ã£o.<br><br>\nã€MÃ©todo de liberarã€‘<br>\nPor mais de {!WAIT!} minutos, guiar gentilmente os iniciantes, por favor.<br>\nFora disso nÃ£o hÃ¡ mÃ©todos de liberaÃ§Ã£o.<br>\n
+508<>Samba RegulamentaÃ§Ã£oä¸­<>Ainda nÃ£o pode escrever.<br><br>ã€€ã€€ã€€ã€€VocÃª estÃ¡ adicionado na lista de regulamentaÃ§Ã£o. <br><br>ã€€ã€€ã€€ã€€ã€MÃ©todo de liberarã€‘<br>ã€€ã€€ã€€ã€€Por mais de {!WAIT!} minutos, guiar gentilmente os iniciantes, por favor.<br>ã€€ã€€ã€€ã€€Fora disso nÃ£o hÃ¡ mÃ©todos de liberaÃ§Ã£o.<br>---------- 
+600<>NG word<>ContÃ©m NG word. Se nÃ£o extrair, nÃ£o poderÃ¡ escrever.
+601<>RegulamentaÃ§Ã£o user<>Em access regulamentaÃ§Ã£o!!({!HITS!})
+# 890ï½BE system error grupo
+890<>InformaÃ§Ã£o aquisiÃ§Ã£o falha<>AquisiÃ§Ã£o de BE user informaÃ§Ã£o falhou.
+891<>ConexÃ£o falha<>NÃ£o pÃ´de conectar a be.2ch.net.({!CODE!})
+892<>BE login falha<>Falhou em BE login.({!CHK!})
+893<>BE login obrigatÃ³rio<>A menos que faÃ§a login em <a href="http://be.2ch.net/">be.2ch.net</a> nÃ£o pode escrever.
+894<>BE_TYPE2 regulamentaÃ§Ã£o<>Be login faÃ§a kudasai(t).<a href="http://be.2ch.net/">be.2ch.net</a>
+# 900ï½thread error grupo
+900<>EspecificaÃ§Ã£o da thread Ã© estranha<>Parece haver algo alÃ©m de nÃºmeros na thread key.<br>Mais uma vez bem confiratyo.
+901<>EspecificaÃ§Ã£o da thread Ã© estranha<>NÃºmeros da thread key estÃ£o estranhos.<br>Mais uma vez bem confiratyo.
+902<>EspecificaÃ§Ã£o da thread Ã© estranha<>A thread em que estÃ¡s tentando escrever nÃ£o existe ou foi apagada...
+# 950ï½system error grupo
+950<>InformaÃ§Ãµes exclusivas de terminal desconhecidas<>Envie informaÃ§Ãµes exclusivas de terminal, por favor.
+997<>ï¼°ï¼²ï¼¯ï¼¸ï¼¹ regulamentaÃ§Ã£o<>ContribuiÃ§Ãµes de ï¼°ï¼²ï¼¯ï¼¸ï¼¹ pÃºblico nÃ£o sÃ£o aceitas!!
+998<>Browser estranho desuyon<>Ã‰ access invÃ¡lido. Esta CGI nÃ£o admite access de parte externa..
+999<>Browser estranho desuyon<>Form informaÃ§Ãµes nÃ£o podem ser lidas corretamente.
+990<>System error<>System estÃ¡ estranho. Talvez seja bom perguntar no github..
