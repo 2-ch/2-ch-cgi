@@ -99,11 +99,11 @@ sub IMAGE
 	my	($text,$limit) = @_;
 	
 	if($limit){
-		$$text =~ s/(http:\/\/.*?\.jpg)/<img src="$1" width=100 height=100\/>/g;
-		$$text =~ s/(http:\/\/.*?\.jpeg)/<img src="$1" width=100 height=100\/>/g;
-		$$text =~ s/(http:\/\/.*?\.gif)/<img src="$1" width=100 height=100\/>/g;
-		$$text =~ s/(http:\/\/.*?\.bmp)/<img src="$1" width=100 height=100\/>/g;
-		$$text =~ s/(http:\/\/.*?\.png)/<img src="$1" width=100 height=100\/>/g;
+		$$text =~ s/(https?:\/\/.*?\.jpg)/<img src="$1" width=100 height=100\/>/g;
+		$$text =~ s/(https?:\/\/.*?\.jpeg)/<img src="$1" width=100 height=100\/>/g;
+		$$text =~ s/(https?:\/\/.*?\.gif)/<img src="$1" width=100 height=100\/>/g;
+		$$text =~ s/(https?:\/\/.*?\.bmp)/<img src="$1" width=100 height=100\/>/g;
+		$$text =~ s/(https?:\/\/.*?\.png)/<img src="$1" width=100 height=100\/>/g;
 	}
 	else{
 		$$text =~ s/<a.*?>(.*?\.jpg)<\/a>/<img src="$1" width=100 height=100\/>/g;
