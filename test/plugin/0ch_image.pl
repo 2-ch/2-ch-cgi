@@ -99,18 +99,18 @@ sub IMAGE
 	my	($text,$limit) = @_;
 	
 	if($limit){
-		$$text =~ s/(https?:\/\/.*?\.jpg)/<img src="$1" width=100 height=100\/>/g;
-		$$text =~ s/(https?:\/\/.*?\.jpeg)/<img src="$1" width=100 height=100\/>/g;
-		$$text =~ s/(https?:\/\/.*?\.gif)/<img src="$1" width=100 height=100\/>/g;
-		$$text =~ s/(https?:\/\/.*?\.bmp)/<img src="$1" width=100 height=100\/>/g;
-		$$text =~ s/(https?:\/\/.*?\.png)/<img src="$1" width=100 height=100\/>/g;
+		$$text =~ s/(http:\/\/.*?\.jpg)/<a href="$1">$1<img src="$1" width=100 height=100\/><\/a>/g;
+		$$text =~ s/(http:\/\/.*?\.jpeg)/<a href="$1">$1<img src="$1" width=100 height=100\/><\/a>/g;
+		$$text =~ s/(http:\/\/.*?\.gif)/<a href="$1">$1<img src="$1" width=100 height=100\/><\/a>/g;
+		$$text =~ s/(http:\/\/.*?\.bmp)/<a href="$1">$1<img src="$1" width=100 height=100\/><\/a>/g;
+		$$text =~ s/(http:\/\/.*?\.png)/<a href="$1">$1<img src="$1" width=100 height=100\/><\/a>/g;
 	}
 	else{
-		$$text =~ s/<a.*?>(.*?\.jpg)<\/a>/<img src="$1" width=100 height=100\/>/g;
-		$$text =~ s/<a.*?>(.*?\.jpeg)<\/a>/<img src="$1" width=100 height=100\/>/g;
-		$$text =~ s/<a.*?>(.*?\.gif)<\/a>/<img src="$1" width=100 height=100\/>/g;
-		$$text =~ s/<a.*?>(.*?\.bmp)<\/a>/<img src="$1" width=100 height=100\/>/g;
-		$$text =~ s/<a.*?>(.*?\.png)<\/a>/<img src="$1" width=100 height=100\/>/g;
+		$$text =~ s/<a.*?>(.*?\.jpg)<\/a>/<a href="$1">$1<img src="$1" width=100 height=100\/><\/a>/g;
+		$$text =~ s/<a.*?>(.*?\.jpeg)<\/a>/<a href="$1">$1<img src="$1" width=100 height=100\/><\/a>/g;
+		$$text =~ s/<a.*?>(.*?\.gif)<\/a>/<a href="$1">$1<img src="$1" width=100 height=100\/><\/a>/g;
+		$$text =~ s/<a.*?>(.*?\.bmp)<\/a>/<a href="$1">$1<img src="$1" width=100 height=100\/><\/a>/g;
+		$$text =~ s/<a.*?>(.*?\.png)<\/a>/<a href="$1">$1<img src="$1" width=100 height=100\/><\/a>/g;
 	}
 }
 
