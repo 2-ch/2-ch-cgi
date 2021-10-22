@@ -115,7 +115,7 @@ sub PrintHead
 <table border="1" cellspacing="7" cellpadding="3" width="95%" bgcolor="#ccffcc" style="margin-bottom:1.2em;" align="center">
  <tr>
   <td>
-  <font size="+1"><b>Procura＠2-ch</b></font>
+  <font size="+1"><b>Busca＠2-ch</b></font>
   
   <div align="center" style="margin:1.2em 0;">
   <form action="./search.cgi" method="POST">
