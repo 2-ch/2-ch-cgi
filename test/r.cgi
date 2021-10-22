@@ -99,7 +99,7 @@ sub Initialize
 		'CONV'	=> $oCONV,
 		'DAT'	=> $oDAT,
 		'PAGE'	=> $Page,
-		'CODE'	=> 'sjis'
+		'CODE'	=> 'utf-8'
 	);
 	
 	# システム初期化
