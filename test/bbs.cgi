@@ -134,7 +134,7 @@ sub Initialize
 		'FORM'		=> $Form,
 		'THREADS'	=> $Threads,
 	);
-
+e
 	# Sonho está expandingu
 	$Sys->Set('MainCGI', $CGI);
 
@@ -150,7 +150,7 @@ sub Initialize
 
 	my $client = $Conv->GetClient();
 
-	$Sys->Set('ENCODE', 'Shift_JIS');
+	$Sys->Set('ENCODE', 'UTF-8');
 	$Sys->Set('BBS', $Form->Get('bbs', ''));
 	$Sys->Set('KEY', $Form->Get('key', ''));
 	$Sys->Set('CLIENT', $client);
