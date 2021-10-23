@@ -1,6 +1,6 @@
 #============================================================================================================
 #
-#	過去ログ管理モジュール
+#	Kako log gerenciamento module
 #
 #============================================================================================================
 package	CELEBORN;
@@ -10,10 +10,10 @@ use strict;
 
 #------------------------------------------------------------------------------------------------------------
 #
-#	コンストラクタ
+#	Constructor
 #	-------------------------------------------------------------------------------------
-#	@param	なし
-#	@return	モジュールオブジェクト
+#	@param	sem
+#	@return	module object
 #
 #------------------------------------------------------------------------------------------------------------
 sub new
@@ -33,10 +33,10 @@ sub new
 
 #------------------------------------------------------------------------------------------------------------
 #
-#	過去ログ情報ファイル読み込み
+#	Kako log informaﾃｧﾃ｣o file leitura
 #	-------------------------------------------------------------------------------------
 #	@param	$Sys	MELKOR
-#	@return	エラー番号
+#	@return	error nﾃｺmero
 #
 #------------------------------------------------------------------------------------------------------------
 sub Load
@@ -79,10 +79,10 @@ sub Load
 
 #------------------------------------------------------------------------------------------------------------
 #
-#	過去ログ情報ファイル書き込み
+#	Kako log informaﾃｧﾃ｣o file escrita
 #	-------------------------------------------------------------------------------------
 #	@param	$Sys	MELKOR
-#	@return	なし
+#	@return	sem
 #
 #------------------------------------------------------------------------------------------------------------
 sub Save
@@ -121,12 +121,12 @@ sub Save
 
 #------------------------------------------------------------------------------------------------------------
 #
-#	IDセット取得
+#	ID set aquisiﾃｧﾃ｣o
 #	-------------------------------------------------------------------------------------
-#	@param	$kind	検索種別
-#	@param	$name	検索ワード
-#	@param	$pBuf	IDセット格納バッファ
-#	@return	キーセット数
+#	@param	$kind	busca tipo
+#	@param	$name	busca word
+#	@param	$pBuf	ID set armazenamento buffer
+#	@return	keyset nﾃｺmero
 #
 #------------------------------------------------------------------------------------------------------------
 sub GetKeySet
@@ -156,12 +156,12 @@ sub GetKeySet
 
 #------------------------------------------------------------------------------------------------------------
 #
-#	情報取得
+#	Informaﾃｧﾃ｣o aquisiﾃｧﾃ｣o
 #	-------------------------------------------------------------------------------------
-#	@param	$kind		情報種別
-#	@param	$key		ユーザID
-#	@param	$default	デフォルト
-#	@return	ユーザ情報
+#	@param	$kind		tipo de informaﾃｧﾃ｣o
+#	@param	$key		user ID
+#	@param	$default	default
+#	@return	user informaﾃｧﾃ｣o
 #
 #------------------------------------------------------------------------------------------------------------
 sub Get
@@ -176,12 +176,12 @@ sub Get
 
 #------------------------------------------------------------------------------------------------------------
 #
-#	追加
+#	Adiﾃｧﾃ｣o
 #	-------------------------------------------------------------------------------------
-#	@param	$key		スレッドキー
-#	@param	$subject	スレッドタイトル
-#	@param	$date		更新日時
-#	@param	$path		パス
+#	@param	$key		thread key
+#	@param	$subject	thread title
+#	@param	$date		atualizaﾃｧﾃ｣o data e hora
+#	@param	$path		path
 #	@return	ID
 #
 #------------------------------------------------------------------------------------------------------------
@@ -203,12 +203,12 @@ sub Add
 
 #------------------------------------------------------------------------------------------------------------
 #
-#	情報設定
+#	Informaﾃｧﾃ｣o configuraﾃｧﾃ｣o
 #	-------------------------------------------------------------------------------------
 #	@param	$id		ID
-#	@param	$kind	情報種別
-#	@param	$val	設定値
-#	@return	なし
+#	@param	$kind	informaﾃｧﾃ｣o tipo
+#	@param	$val	configuraﾃｧﾃ｣o valor
+#	@return	sem
 #
 #------------------------------------------------------------------------------------------------------------
 sub Set
@@ -223,10 +223,10 @@ sub Set
 
 #------------------------------------------------------------------------------------------------------------
 #
-#	情報削除
+#	Informaﾃｧﾃ｣o apagaﾃｧﾃ｣o
 #	-------------------------------------------------------------------------------------
-#	@param	$id		削除ID
-#	@return	なし
+#	@param	$id		apagaﾃｧﾃ｣o ID
+#	@return	sem
 #
 #------------------------------------------------------------------------------------------------------------
 sub Delete
@@ -242,10 +242,10 @@ sub Delete
 
 #------------------------------------------------------------------------------------------------------------
 #
-#	過去ログ情報の更新
+#	Kako log informaﾃｧﾃ｣o atualizaﾃｧﾃ｣o
 #	-------------------------------------------------------------------------------------
 #	@param	$Sys	MELKOR
-#	@return	なし
+#	@return	sem
 #
 #------------------------------------------------------------------------------------------------------------
 sub UpdateInfo
@@ -262,7 +262,7 @@ sub UpdateInfo
 	
 	my $path = $Sys->Get('BBSPATH') . '/' . $Sys->Get('BBS') . '/kako';
 	
-	# ディレクトリ情報を取得
+	# Obter directory informaﾃｧﾃ｣o
 	my $hierarchy = {};
 	my @dirList = ();
 	EARENDIL::GetFolderHierarchy($path, $hierarchy);
@@ -284,11 +284,11 @@ sub UpdateInfo
 
 #------------------------------------------------------------------------------------------------------------
 #
-#	過去ログindexの更新
+#	Atualizaﾃｧﾃ｣o de kako log index
 #	-------------------------------------------------------------------------------------
 #	@param	$Sys	MELKOR
 #	@param	$Page	
-#	@return	なし
+#	@return	sem
 #
 #------------------------------------------------------------------------------------------------------------
 sub UpdateIndex
@@ -296,14 +296,14 @@ sub UpdateIndex
 	my $this = shift;
 	my ($Sys, $Page) = @_;
 	
-	# 告知情報読み込み
+	# kokuchi informaﾃｧﾃ｣o leitura
 	require './module/denethor.pl';
 	my $Banner = DENETHOR->new;
 	$Banner->Load($Sys);
 	
 	my $basePath = $Sys->Get('BBSPATH') . '/' . $Sys->Get('BBS');
 	
-	# パスをキーにしてハッシュを作成
+	# Fazer a path em key e criar hash
 	my %PATHES = ();
 	foreach my $id (keys %{$this->{'KEY'}}) {
 		my $path = $this->{'PATH'}->{$id};
@@ -312,18 +312,18 @@ sub UpdateIndex
 	my @dirs = keys %PATHES;
 	unshift @dirs, '';
 	
-	# パスごとにindexを生成する
+	# Para cada path criar index
 	foreach my $path (@dirs) {
 		my @info = ();
 		
-		# 1階層下のサブフォルダを取得する
+		# Obter subfolder 1 andar abaixo
 		my @folderList = ();
 		GetSubFolders($path, \@dirs, \@folderList);
 		foreach my $dir (sort @folderList) {
 			push @info, "0<>0<>0<>$dir";
 		}
 		
-		# ログデータがあれば情報配列に追加する
+		# Se tiver log data adicionar ao informaﾃｧﾃ｣o arranjo
 		foreach my $id (keys %{$this->{'KEY'}}) {
 			if ($path eq $this->{'PATH'}->{$id} && $this->{'KEY'}->{$id} ne '0') {
 				my $data = join('<>',
@@ -336,7 +336,7 @@ sub UpdateIndex
 			}
 		}
 		
-		# indexファイルを出力する
+		# Sair index file
 		$Page->Clear();
 		OutputIndex($Sys, $Page, $Banner, \@info, $basePath, $path);
 		chmod($Sys->Get('PM-KDIR'), "$basePath/kako$path");
@@ -345,12 +345,12 @@ sub UpdateIndex
 
 #------------------------------------------------------------------------------------------------------------
 #
-#	サブフォルダを取得する
+#	Obter subfolder
 #	-------------------------------------------------------------------------------------
-#	@param	$base	親フォルダパス
-#	@param	$pDirs	ディレクトリ名の配列
-#	@param	$pList	サブフォルダ格納配列
-#	@return	なし
+#	@param	$base	Parente folder path
+#	@param	$pDirs	Arranjo de directory nome
+#	@param	$pList	Subfolder armazenamento arranjo
+#	@return	sem
 #
 #------------------------------------------------------------------------------------------------------------
 sub GetSubFolders
@@ -358,7 +358,7 @@ sub GetSubFolders
 	
 	my ($base, $pDirs, $pList) = @_;
 	
-	# foreach my $dir とすると$pDirが破壊される
+	# Ao fazer foreach my $dir destrﾃｳi $pDir
 	foreach (@$pDirs) {
 		my $dir = $_;
 		if ($dir =~ s|^\Q$base/\E|| && $dir !~ m|/|) {
@@ -369,10 +369,10 @@ sub GetSubFolders
 
 #------------------------------------------------------------------------------------------------------------
 #
-#	過去ログタイトルの取得
+#	Aquisiﾃｧﾃ｣o de kako log title
 #	-------------------------------------------------------------------------------------
-#	@param	$path	取得するファイルのパス
-#	@return	タイトル
+#	@param	$path	path para file adquirir
+#	@return	title
 #
 #------------------------------------------------------------------------------------------------------------
 sub GetThreadSubject
@@ -401,16 +401,16 @@ sub GetThreadSubject
 
 #------------------------------------------------------------------------------------------------------------
 #
-#	過去ログindexを出力する
+#	Sair kako log index
 #	-------------------------------------------------------------------------------------
 #	@param	$Sys	MELKOR
 #	@param	$Page	THORIN
 #	@param	$Banner	DENETHOR
-#	@param	$pInfo	出力情報配列
-#	@param	$base	掲示板トップパス
-#	@param	$path	index出力パス
+#	@param	$pInfo	saﾃｭda informaﾃｧﾃ｣o arranjo
+#	@param	$base	keijiban top path
+#	@param	$path	index saﾃｭda path
 #	@param	$Set	SETTING
-#	@return	なし
+#	@return	sem
 #
 #------------------------------------------------------------------------------------------------------------
 sub OutputIndex
@@ -429,30 +429,30 @@ sub OutputIndex
 	my $board = $Sys->Get('BBS');
 	
 	$Page->Print(<<HTML);
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-<html lang="ja">
+<!DOCTYPE html>
+<html lang="pt">
 <head>
 
- <meta http-equiv="Content-Type" content="text/html;charset=Shift_JIS">
+ <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
 
 HTML
 	
 	$Caption->Print($Page, undef);
 	
 	$Page->Print(<<HTML);
- <title>過去ログ倉庫 - $board$path</title>
+ <title>Kako log armazﾃｩm - $board$path</title>
 
 </head>
 <!--nobanner-->
 <body>
 HTML
 	
-	# 告知欄出力
+	# kokuchi coluna saﾃｭda
 	$Banner->Print($Page, 100, 2, 0) if ($Sys->Get('BANNER') & 5);
 	
 	$Page->Print(<<HTML);
 
-<h1 align="center" style="margin-bottom:0.2em;">過去ログ倉庫</h1>
+<h1 align="center" style="margin-bottom:0.2em;">Kako log armazﾃｩm</h1>
 <h2 align="center" style="margin-top:0.2em;">$board</h2>
 
 <table border="1">
@@ -466,12 +466,12 @@ HTML
 	foreach (@$pInfo) {
 		my @elem = split(/<>/, $_, -1);
 		
-		# サブフォルダ情報
+		# Subfolder informaﾃｧﾃ｣o
 		if ($elem[0] eq '0') {
 			$Page->Print(" <tr>\n  <td>Directory</td>\n  <td><a href=\"$elem[3]/\">");
 			$Page->Print("$elem[3]</a></td>\n  <td>-</td>\n </tr>\n");
 		}
-		# 過去ログ情報
+		# Kako log informaﾃｧﾃ｣o
 		else {
 			$Page->Print(" <tr>\n  <td>$elem[0]</td>\n  <td><a href=\"$elem[0].html\">");
 			$Page->Print("$elem[1]</a></td>\n  <td>$elem[2]</td>\n </tr>\n");
@@ -480,7 +480,7 @@ HTML
 	$Page->Print("</table>\n\n<hr>\n");
 	$Page->Print(<<HTML);
 
-<a href="$bbsRoot/">■掲示板に戻る■</a> | <a href="$bbsRoot/kako/">■過去ログトップに戻る■</a> | <a href="../">■1つ上に戻る■</a>
+<a href="$bbsRoot/">笆Voltar ao keijiban笆</a> | <a href="$bbsRoot/kako/">笆Voltar ao kako log top笆</a> | <a href="../">笆Voltar um para cima笆</a>
 
 <hr>
 
@@ -491,11 +491,11 @@ $version
 </html>
 HTML
 	
-	# index.htmlを出力する
+	# Sair index.html
 	$Page->Flush(1, 0666, "$base/kako$path/index.html");
 }
 
 #============================================================================================================
-#	モジュール終端
+#	Module terminaﾃｧﾃ｣o
 #============================================================================================================
 1;
