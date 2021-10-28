@@ -335,7 +335,7 @@ sub InitSettingData
 		'BBS_RES_MAX'			=> '',
 		'BBS_COOKIEPATH'		=> '/',
 		'BBS_READONLY'			=> 'none',
-		'BBS_REFERER_CUSHION'	=> 'jump.2-ch.heliohost.org/',
+		'BBS_REFERER_CUSHION'	=> 'http://jump.2-ch.heliohost.org/',
 		'BBS_THREADCAPONLY'		=> '',
 		'BBS_THREADMOBILE'		=> '',
 		'BBS_TRIPCOLUMN'		=> 10,
