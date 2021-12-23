@@ -884,7 +884,7 @@ sub GetDate
 	my $this = shift;
 	my ($Set, $msect) = @_;
 	
-	$ENV{'TZ'} = 'GMT-3';
+	$ENV{'TZ'} = 'America/Sao_Paulo';
 	my @info = localtime time;
 	$info[5] += 1900;
 	$info[4] += 1;
@@ -927,7 +927,7 @@ sub GetDateFromSerial
 	my $this = shift;
 	my ($serial, $mode) = @_;
 	
-	$ENV{'TZ'} = 'GMT-3';
+	$ENV{'TZ'} = 'America/Sao_Paulo';
 	my @info = localtime $serial;
 	$info[5] += 1900;
 	$info[4] += 1;
