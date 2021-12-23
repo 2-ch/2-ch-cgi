@@ -135,7 +135,8 @@ sub CreateIIndex
 	# HTMLヘッダの出力
 	my $title = $Set->Get('BBS_TITLE');
 	my $code = $this->{'CODE'};
-    	$Page->Print("<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"><title>$title</title>");
+	$Page->Print("<html><!--nobanner--><head><title>$title</title>");
+	$Page->Print("<meta http-equiv=Content-Type content=\"text/html;charset=$code\">");
 	$Page->Print("</head><body><center>$title</center>");
 	
 	# バナー表示
@@ -162,12 +163,12 @@ sub CreateIIndex
 	my $cgiPath = $Sys->Get('CGIPATH');
 	my $pathf = "$cgiPath/p.cgi" . ($Sys->Get('PATHKIND') ? "?bbs=$bbs&st=$i" : "/$bbs/$i");
 	$Page->Print("<hr>");
-	$Page->Print("<a href=\"$pathf\">続き</a>\n");
+	$Page->Print("<a href=\"$pathf\">Continuação</a>\n");
 	$Page->Print("<form action=\"$cgiPath/bbs.cgi?guid=ON\" method=\"POST\">");
 	$Page->Print("<input type=hidden name=bbs value=$bbs>");
 	$Page->Print("<input type=hidden name=mb value=on>");
 	$Page->Print("<input type=hidden name=thread value=on>");
-	$Page->Print("<input type=submit value=\"スレッド作成\">");
+	$Page->Print("<input type=submit value=\"Criação de thread\">");
 	$Page->Print("</form><hr></body></html>\n");
 	
 	# i/index.htmlに書き込み
