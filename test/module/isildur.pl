@@ -280,7 +280,7 @@ sub InitSettingData
 	my %set = (
 		# ２ちゃんねる互換設定項目
 		'BBS_TITLE'				=> 'keijiban＠2-ch keijiban',
-		'BBS_TITLE_PICTURE'		=> 'kanban.gif',
+		'BBS_TITLE_PICTURE'		=> '../img/2-chdefo00.gif',
 		'BBS_TITLE_COLOR'		=> '#000000',
 		'BBS_TITLE_LINK'		=> 'http://info.mokoich.net/guide/',
 		'BBS_BG_COLOR'			=> '#FFFFFF',
