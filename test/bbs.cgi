@@ -134,7 +134,7 @@ sub Initialize
 		'FORM'		=> $Form,
 		'THREADS'	=> $Threads,
 	);
-e
+	
 	# Sonho está expandingu
 	$Sys->Set('MainCGI', $CGI);
 
