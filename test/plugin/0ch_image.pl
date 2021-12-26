@@ -1,6 +1,6 @@
 #============================================================================================================
 #
-#	Extensão - Função de exibição de imagem
+#	拡張機能 - 画像表示機能
 #	0ch_image.pl
 #	---------------------------------------------------------------------------
 #	2005.02.19 start
@@ -99,18 +99,18 @@ sub IMAGE
 	my	($text,$limit) = @_;
 	
 	if($limit){
-		$$text =~ s/(http:\/\/.*?\.jpg)/<a href="$1">$1<img src="$1" width=100 height=100\/><\/a>/g;
-		$$text =~ s/(http:\/\/.*?\.jpeg)/<a href="$1">$1<img src="$1" width=100 height=100\/><\/a>/g;
-		$$text =~ s/(http:\/\/.*?\.gif)/<a href="$1">$1<img src="$1" width=100 height=100\/><\/a>/g;
-		$$text =~ s/(http:\/\/.*?\.bmp)/<a href="$1">$1<img src="$1" width=100 height=100\/><\/a>/g;
-		$$text =~ s/(http:\/\/.*?\.png)/<a href="$1">$1<img src="$1" width=100 height=100\/><\/a>/g;
+		$$text =~ s/(http:\/\/.*?\.jpg)/<a href="$1">$1<br><img src="$1" width=100 height=100\/><\/a>/g;
+		$$text =~ s/(http:\/\/.*?\.jpeg)/<a href="$1">$1<br><img src="$1" width=100 height=100\/><\/a>/g;
+		$$text =~ s/(http:\/\/.*?\.gif)/<a href="$1">$1<br><img src="$1" width=100 height=100\/><\/a>/g;
+		$$text =~ s/(http:\/\/.*?\.bmp)/<a href="$1">$1<br><img src="$1" width=100 height=100\/><\/a>/g;
+		$$text =~ s/(http:\/\/.*?\.png)/<a href="$1">$1<br><img src="$1" width=100 height=100\/><\/a>/g;
 	}
 	else{
-		$$text =~ s/<a.*?>(.*?\.jpg)<\/a>/<a href="$1">$1<img src="$1" width=100 height=100\/><\/a>/g;
-		$$text =~ s/<a.*?>(.*?\.jpeg)<\/a>/<a href="$1">$1<img src="$1" width=100 height=100\/><\/a>/g;
-		$$text =~ s/<a.*?>(.*?\.gif)<\/a>/<a href="$1">$1<img src="$1" width=100 height=100\/><\/a>/g;
-		$$text =~ s/<a.*?>(.*?\.bmp)<\/a>/<a href="$1">$1<img src="$1" width=100 height=100\/><\/a>/g;
-		$$text =~ s/<a.*?>(.*?\.png)<\/a>/<a href="$1">$1<img src="$1" width=100 height=100\/><\/a>/g;
+		$$text =~ s/<a.*?>(.*?\.jpg)<\/a>/<a href="$1">$1<br><img src="$1" width=100 height=100\/><\/a>/g;
+		$$text =~ s/<a.*?>(.*?\.jpeg)<\/a>/<a href="$1">$1<br><img src="$1" width=100 height=100\/><\/a>/g;
+		$$text =~ s/<a.*?>(.*?\.gif)<\/a>/<a href="$1">$1<br><img src="$1" width=100 height=100\/><\/a>/g;
+		$$text =~ s/<a.*?>(.*?\.bmp)<\/a>/<a href="$1">$1<br><img src="$1" width=100 height=100\/><\/a>/g;
+		$$text =~ s/<a.*?>(.*?\.png)<\/a>/<a href="$1">$1<br><img src="$1" width=100 height=100\/><\/a>/g;
 	}
 }
 
