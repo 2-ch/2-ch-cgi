@@ -295,10 +295,14 @@ sub PrintIndexHead
 <html lang="pt">
 <head>
  
- 
  <meta http-equiv="Content-Script-Type" content="text/javascript">
  <meta charset="utf-8">
  <meta name="viewport" content="width=device-width, initial-scale=1">
+ <style type="text/css">
+ body { font-family: 'MS PGothic', 'MS Pゴシック', Mona, sans-serif }
+ span.spoiler { background: black; color: black; padding: 0 1px; }
+ span.spoiler:hover, div.post.reply div.body span.spoiler:hover a { color: white; }
+ </style>
  
 HEAD
 	
@@ -570,7 +574,7 @@ FORM
  <tr>
   <td>&lrm;</td>
   <td nowrap>
-  Title：<input type="text" name="subject" size="40"><input type="submit" value="新規スレッド作成"><br>
+  Title：<input type="text" name="subject" size="40"><input type="submit" value="Criação de thread nova"><br>
   Nome：<input type="text" name="FROM" size="19"> E-mail：<input type="text" name="mail" size="19"><br>
   Conteúdo：<textarea rows="5" cols="60" name="MESSAGE"></textarea>
   <input type="hidden" name="bbs" value="$bbs">
