@@ -299,9 +299,12 @@ sub PrintIndexHead
  <meta charset="utf-8">
  <meta name="viewport" content="width=device-width, initial-scale=1">
  <style type="text/css">
- body { font-family: 'MS PGothic', 'MS Pゴシック', Mona, sans-serif }
- span.spoiler { background: black; color: black; padding: 0 1px; }
- span.spoiler:hover, div.post.reply div.body span.spoiler:hover a { color: white; }
+  	body{ margin: 0; padding: 0 0 106px 0; font-family: 'MS PGothic', 'MS Pゴシック', Mona, sans-serif; }
+  	span.spoiler { background: black; color: black; padding: 0 1px; }
+  	span.spoiler:hover, div.post.reply div.body span.spoiler:hover
+	h3{ margin: 0; padding: 0.5em 0; text-align: left; font-size: 1.00em; }
+	h3 span.common { padding: 0.5em; border-radius: 0.50em / 0.50em; background: #39F; color: #FFF; font-size: 1.00em; }
+	div.board_header { margin: 0 1.0em 0.0em 1.0em; padding: 0.5em; background: #FFF; border-radius: 0.25em / 0.25em; font-size: 1.00em; height: 15em; overflow-y: scroll; }
  </style>
  
 HEAD
@@ -332,10 +335,15 @@ HEAD
 
 	}
 	$Page->Print("<a name=\"top\"></a>\n");
-	
+	$Page->Print("<div style=\"position: fixed; width: 100%; margin: 0; padding: 0.25em 2.00em 0.25em 0.25em; text-align: left; font-size: 0.75em; background: #FFF; opacity: 0.9;\">");
+	$Page->Print("<a style=\"margin: 0 0.5em;\" target=\"_blank\" href=\"//mokoich.net/\">mokoichannel</a>|<a style=\"margin: 0 0.5em;\" target=\"_blank\" href=\"//menu.mokoich.net/bbstable.html\">Lista de keijiban</a>|<a style=\"margin: 0 0.5em;\" target=\"_blank\" href=\"https://twitter.com/mokoichannel\"><img style=\"height: 1.00em;\" src=\"//mokoich.net/img/twitter.png\"> &commat;mokoichannel</a>|<form method=\"GET\" accept-charset=\"UTF-8\" style=\"display: inline;\" action=\"//test/search.cgi\">");
+	$Page->Print("<input type=\"text\" size=\"40\" name=\"WORD\" value=\"\" style=\"width:32em; height:1.30em; margin: 0 0 0 0.5em; opacity: 1.0;\"><input type=\"submit\" value=\"Busca\" style=\"margin: 0 0.5em; opacity: 1.0;\">");
+	$Page->Print("</form>");
+	$Page->Print("</div>");
 	# 看板画像表示あり
 	if ($image ne '') {
-		$Page->Print("<div align=\"center\">");
+		$Page->Print("<div style=\"margin: 0; padding: 1.50em 0 0.00em 0; text-align: center;\">");
+		$Page->Print("<h1 align=\"center\">");
 		# 看板画像からのリンクあり
 		if ($link ne '') {
 			$Page->Print("<a href=\"$link\"><img src=\"$image\" border=\"0\" alt=\"$link\"></a>");
@@ -344,6 +352,7 @@ HEAD
 		else {
 			$Page->Print("<img src=\"$image\" border=\"0\" alt=\"$link\">");
 		}
+		$Page->Print("</h1>");
 		$Page->Print("</div>\n");
 	}
 	
