@@ -244,7 +244,7 @@ sub InitSystemValue
 		'DATA'		=> '/datas',								# 初期データ設置パス
 		'BBSPATH'	=> '..',									# 掲示板設置パス
 		'DEBUG'		=> 0,										# デバグモード
-		'VERSION'	=> '<a href="http://github.com/2-ch/2-ch-cgi/">2-ch CGI 2021/10/01</a>',					# CGIバージョン
+		'VERSION'	=> '<a href="http://github.com/2-ch/2-ch-cgi/">2-ch CGI 2024/02/07</a>',					# CGIバージョン
 		'PM-DAT'	=> 0644,									# datパーミション
 		'PM-STOP'	=> 0444,									# スレストパーミション
 		'PM-TXT'	=> 0644,									# TXTパーミション
