@@ -193,7 +193,7 @@ sub PrintReadHead
 
  
  <meta http-equiv="Content-Style-Type" content="text/css">
-
+ <meta name="viewport" content="width=device-width, initial-scale=1">
 HTML
 
 	$Caption->Print($Page, undef);
