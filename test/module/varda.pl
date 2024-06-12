@@ -601,7 +601,7 @@ FORM
 	
 	$Page->Print(<<FOOT);
 <div style="margin-top:1.2em;">
-<a href="http://2-ch.heliohost.org/">mokoichannel</a>
+<a href="http://mokoich.net/">mokoichannel</a>
 BBS.CGI - $ver (Perl)
 </div>
 
