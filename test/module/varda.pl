@@ -336,7 +336,7 @@ HEAD
 	}
 	$Page->Print("<a name=\"top\"></a>\n");
 	$Page->Print("<div style=\"position: fixed; width: 100%; margin: 0; padding: 0.25em 2.00em 0.25em 0.25em; text-align: left; font-size: 0.75em; background: #FFF; opacity: 0.9;\">");
-	$Page->Print("<a style=\"margin: 0 0.5em;\" target=\"_blank\" href=\"//mokoich.net/\">mokoichannel</a>|<a style=\"margin: 0 0.5em;\" target=\"_blank\" href=\"//menu.mokoich.net/bbstable.html\">Lista de keijiban</a>|<a style=\"margin: 0 0.5em;\" target=\"_blank\" href=\"https://twitter.com/mokoichannel\"><img style=\"height: 1.00em;\" src=\"//mokoich.net/img/twitter.png\"> &commat;mokoichannel</a>|<form method=\"GET\" accept-charset=\"UTF-8\" style=\"display: inline;\" action=\"//test/search.cgi\">");
+	$Page->Print("<a style=\"margin: 0 0.5em;\" target=\"_blank\" href=\"//mokoich.net/\">mokoichannel</a>|<a style=\"margin: 0 0.5em;\" target=\"_blank\" href=\"//mokoich.net/bbstable.html\">Lista de keijiban</a>|<a style=\"margin: 0 0.5em;\" target=\"_blank\" href=\"https://twitter.com/mokoichannel\"><img style=\"height: 1.00em;\" src=\"//mokoich.net/img/twitter.png\"> &commat;mokoichannel</a>|<form method=\"GET\" accept-charset=\"UTF-8\" style=\"display: inline;\" action=\"//test/search.cgi\">");
 	$Page->Print("<input type=\"text\" size=\"40\" name=\"WORD\" value=\"\" style=\"width:32em; height:1.30em; margin: 0 0 0 0.5em; opacity: 1.0;\"><input type=\"submit\" value=\"Busca\" style=\"margin: 0 0.5em; opacity: 1.0;\">");
 	$Page->Print("</form>");
 	$Page->Print("</div>");
