@@ -448,7 +448,7 @@ HTML
 	}
 
 	$Page->Print(<<HTML);
-<font size="4" color="#FF0000"><b>Escrita＆Cookie verificação</b></font>
+<font size="4" color="#FF0000"><b>Escrita&Cookie verificação</b></font>
 <blockquote style="margin-top:4em;">
  Nome： $name<br>
  E-mail： $mail<br>
