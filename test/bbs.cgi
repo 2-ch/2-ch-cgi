@@ -448,7 +448,7 @@ HTML
 	}
 
 	$Page->Print(<<HTML);
-<font size="4" color="#FF0000"><b>Escrita＆Cookie verificação</b></font>
+<font size="4" color="#FF0000"><b>Escrita&Cookie verificação</b></font>
 <blockquote style="margin-top:4em;">
  Nome： $name<br>
  E-mail： $mail<br>
@@ -458,11 +458,11 @@ HTML
 
 <div style="font-weight:bold;">
 Verificação de contribuição<br>
-・Contribuinte aceita que a responsabilidade que surge com relação a contribuição volta ao contribuinte.<br>
-・Contribuinte, com relação a contribuições de anúncios sem relevância ao tema, concorda em pagar uma taxa razoável.<br>
-・Contribuinte, sobre o conteúdo contribuído, permite que o operador do keijiban copie, salve, cite, reimprima entre outros usos.<br>
-　Também, a respeito do operador do keijiban, concorda não exercer em absoluto nenhum direito moral.<br>
-・Contribuinte, a respeito dos terceiros indicados pelo operador do keijiban, concorda absolutamente não fazer licença de coisas protegidas por direitos autorais.<br>
+・O contribuidor concorda que qualquer responsabilidade decorrente da sua contribuição lhe seja inteiramente atribuída.<br>
+・O contribuidor concorda em pagar uma taxa razoável em relação à contribuição de anúncios que sejam irrelevantes para o tópico<br>
+・O contribuidor autoriza o operador do BBS a copiar, salvar, citar, reimprimir, utilizar, etc. de qualquer outra forma o conteúdo da sua contribuição.<br>
+　Igualmente, concorda em não exercer quaisquer direitos morais de autor contra o operador do BBS.<br>
+・O contribuidor, em relação aos terceiros indicados pelo operador do BBS, concorda absolutamente em não fazer licença de trabalhos protegidos por direitos autorais.<br>
 </div>
 
 <form method="POST" action="./bbs.cgi?guid=ON">
@@ -483,15 +483,15 @@ HTML
 	}
 
 	$Page->Print(<<HTML);
-<input type="submit" value="Aceitar todos os ítens acima e escrever"><br>
+<input type="submit" value="Aceitar todos os itens acima e escrever"><br>
 </form>
 
 <p>
-Caso de mudar é volte no botão voltar reescrevakudasai.
+Caso mude de ideia, volte no botão voltar e reescrevakudasai.
 </p>
 
 <p>
-Atual, como arasi prevenção cookie não configurado e escrita tornará se não possível.<br>
+Atualmente, como prevenção de vandalismo, não é possível a escrita se cookies não estiverem configurados.<br>
 <font size="2">(fazer configuração de cookie e esta tela vai desaparecer.)</font><br>
 </p>
 
