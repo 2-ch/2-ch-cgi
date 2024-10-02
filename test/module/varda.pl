@@ -305,6 +305,13 @@ sub PrintIndexHead
 	h3{ margin: 0; padding: 0.5em 0; text-align: left; font-size: 1.00em; }
 	h3 span.common { padding: 0.5em; border-radius: 0.50em / 0.50em; background: #39F; color: #FFF; font-size: 1.00em; }
 	div.board_header { margin: 0 1.0em 0.0em 1.0em; padding: 0.5em; background: #FFF; border-radius: 0.25em / 0.25em; font-size: 1.00em; height: 15em; overflow-y: scroll; }
+ 	table { margin: 0.5em auto 0.75em auto; padding: 0.10em; border: 1px; }
+	 * { box-sizing: border-box; -moz-box-sizing: border-box; -webkit-box-sizing: border-box; word-wrap: break-word; }
+	input[type="text"], textarea, select { background: #fff; border: 1px inset #ddd; color: #000; }
+	input[type="submit"], input[type="button"], button { border: 1px outset #ddd; color: #333; padding: 3px 1em; }
+	input[type="submit"]:active, input[type="button"]:active, input[type="button"].active, button:active { color: #111; border-style: inset; }
+	textarea { display: block; margin: 1px 0; line-height: 18px; max-width: 100%; }
+	textarea { margin: 0 0 3px; width: 100%; }
  </style>
  
 HEAD
