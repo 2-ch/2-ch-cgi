@@ -279,13 +279,13 @@ sub InitSettingData
 	
 	my %set = (
 		# ２ちゃんねる互換設定項目
-		'BBS_TITLE'				=> 'keijiban＠2-ch keijiban',
+		'BBS_TITLE'				=> 'keijiban@2-ch keijiban',
 		'BBS_TITLE_PICTURE'		=> '../img/2-chdefo00.gif',
 		'BBS_TITLE_COLOR'		=> '#000000',
-		'BBS_TITLE_LINK'		=> 'http://info.mokoich.net/guide/',
+		'BBS_TITLE_LINK'		=> 'http://mokoich.net/faq.html',
 		'BBS_BG_COLOR'			=> '#FFFFFF',
 		'BBS_BG_PICTURE'		=> 'ba.gif',
-		'BBS_NONAME_NAME'		=> 'Sem Nome san＠Barriga cheia。',
+		'BBS_NONAME_NAME'		=> 'Sem Nome@Sem Ideias.',
 		'BBS_MAKETHREAD_COLOR'	=> '#CCFFCC',
 		'BBS_MENU_COLOR'		=> '#CCFFCC',
 		'BBS_THREAD_COLOR'		=> '#EFEFEF',
@@ -335,7 +335,7 @@ sub InitSettingData
 		'BBS_RES_MAX'			=> '',
 		'BBS_COOKIEPATH'		=> '/',
 		'BBS_READONLY'			=> 'none',
-		'BBS_REFERER_CUSHION'	=> 'http://jump.mokoich.net/',
+		'BBS_REFERER_CUSHION'	=> '',
 		'BBS_THREADCAPONLY'		=> '',
 		'BBS_THREADMOBILE'		=> '',
 		'BBS_TRIPCOLUMN'		=> 10,
