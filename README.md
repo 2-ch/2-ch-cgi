@@ -5,4 +5,4 @@
 Esta script é baseada em outras scripts como zerochannel plus e kareha.
 
 # Install
-As instruções para instalar esta script, encontram se [aqui](https://ja.osdn.net/projects/zerochplus/wiki/Install)
+As instruções para instalar esta script encontram-se [aqui](https://ja.osdn.net/projects/zerochplus/wiki/Install)
