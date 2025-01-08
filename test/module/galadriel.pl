@@ -223,7 +223,22 @@ sub ConvertQuotation
 	
 	# 時間による制限有り
 	return $text if ($Sys->Get('LIMTIME'));
-	
+ 
+	# Convert [b]text[/b] to bold
+	$$text =~ s/\[b\](.*?)\[\/b\]/<b>$1<\/b>/g;
+    
+	# Convert [i]text[/i] to italics</i>
+	$$text =~ s/\[i\](.*?)\[\/i\]/<i>$1<\/i>/g;	
+
+	# Convert [spoiler]text[/spoiler] to spoiler
+	$$text =~ s/\[spoiler\](.*?)\[\/spoiler\]/<span class="spoiler">$1<\/span>/g;	
+
+	# Convert [s]text[/s] to strikethrough
+	$$text =~ s/\[s\](.*?)\[\/s\]/<s>$1<\/s>/g;	
+
+	# Convert [u]text[/u] to underline
+	$$text =~ s/\[u\](.*?)\[\/u\]/<u>$1<\/u>/g;	
+
 	my $pathCGI = $Sys->Get('SERVER') . $Sys->Get('CGIPATH');
 	
 	if ($Sys->Get('PATHKIND')) {
